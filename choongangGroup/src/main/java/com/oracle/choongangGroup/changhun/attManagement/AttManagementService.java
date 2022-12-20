@@ -99,7 +99,9 @@ public class AttManagementService {
 
 	// 퇴근 등록
 	public void attOff() throws ParseException {
-		String userid = "18301001";
+		
+		Member member1 = getMember.getMember();
+		String userid = member1.getUserid();
 		
 		// 날짜 포맷
 		SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:ss");
