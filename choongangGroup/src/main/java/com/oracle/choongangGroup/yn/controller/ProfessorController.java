@@ -58,7 +58,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ProfessorController {
 	
 	public final MemberRepository mrr;
-	private final ManagerPageRepository mr;
+	private final ManagerPageRepository mr; 
 	private final AddressService addressService;
 	private final ManagerPageService ms;
 	private final LecService ls;
@@ -89,7 +89,7 @@ public class ProfessorController {
 		for(Lecture lecList : lectureList) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("lecture", lecList);
-			List<ApplicationLec> alList = ls.findByLecture_IdAndGubun(lecList.getId(), 1L);
+			List<ApplicationLec> alList = ls.findByLecture_IdAndGubun(lecList.getId(), 2L);
 			map.put("memberCnt", alList.size());
 			mapList.add(map);
 		}
@@ -183,7 +183,8 @@ public class ProfessorController {
 		public String addressForm(Model model,
 				 				  @RequestParam(required = false, defaultValue = "0", value="page") int page) {
 			
-			Page<Member> addressList = mr.findAll(PageRequest.of(page, 10, Sort.by(Sort.Direction.ASC,"name")));
+			Page<Member> addressList = mrr.findAll(PageRequest.of(page, 10, Sort.by(Sort.Direction.ASC,"dept_deptno")));
+			
 			
 			int totalPage = addressList.getTotalPages();
 			
@@ -199,15 +200,14 @@ public class ProfessorController {
 		public String likeAddress(HttpServletRequest request, Model model,
 								  @RequestParam(required = false, defaultValue = "0", value="page") int page) {
 		
-			String userid = gm.getMember().getUserid();
+			Member member = getMember.getMember();
+			String userid = member.getUserid();
 			
 			Page<PhoneLike> like = ar.findByMyUserid(userid, PageRequest.of(page, 10, Sort.by(Sort.Direction.ASC,"member.name")));
 			
 			int totalPage = like.getTotalPages();
 			
-			System.out.println("totalpage -> " + totalPage);
-			
-			model.addAttribute("member", gm.getMember());
+			model.addAttribute("member", member);
 			model.addAttribute("page", page);
 			model.addAttribute("totalPage", totalPage);
 			model.addAttribute("likeList",like.getContent());
@@ -225,7 +225,7 @@ public class ProfessorController {
 		Member member = gm.getMember();
 		
 		if(name == null || name.equals("")) {
-			addressList = mr.findAll(PageRequest.of(page, 10, Sort.by(Sort.Direction.ASC,"name")));
+			addressList = mrr.findAll(PageRequest.of(page, 10, Sort.by(Sort.Direction.ASC,"name")));
 		} else {
 			addressList = mrr.findByNameContaining(name, PageRequest.of(page, 10, Sort.by(Sort.Direction.ASC,"name")));
 		}
@@ -304,7 +304,7 @@ public class ProfessorController {
 		@PreAuthorize("isAuthenticated()")
 		public String detail(@RequestParam Long noticeNum, Model model, HttpServletRequest request, HttpServletResponse response, NoticeDto noticeDto) {
 			log.info("Detail start...");
-			System.out.println("noticeNum -> " + noticeNum);		
+
 			Member member = getMember.getMember();
 			Notice notice = noticeService.findById(noticeNum);
 			model.addAttribute("member" , member);
@@ -320,9 +320,8 @@ public class ProfessorController {
 		public String EvaManagementForm(Model model,
 										@RequestParam(value = "lecId", required = false) String lecid) {
 			List<Lecture> lecIdList = null ;
-			Member member = getMember.getMember();
-			
-			String name = member.getName();
+//			Member member = getMember.getMember();
+			String name = getMember.getMember().getName();
 			
 			lecIdList = lr.findByProf(name);
 			
@@ -336,12 +335,12 @@ public class ProfessorController {
 			EvaVo total = es.total(lecid);
 			
 			
-			model.addAttribute("member", member);
+			model.addAttribute("member", getMember.getMember());
 			model.addAttribute("evaList", evaList);
 			model.addAttribute("reviewList", reviewList);
 			model.addAttribute("total", total);
 			
-			return "professor/EvaManagementForm1";
+			return "professor/lecEvaForm";
 		}
 		
 		@ResponseBody

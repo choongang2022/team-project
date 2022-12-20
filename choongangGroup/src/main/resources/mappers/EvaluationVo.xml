@@ -69,6 +69,13 @@
 
 	</insert>
 
+	 <select id="hjEvMemberinfoSelOne" parameterType="String" resultType="MemberVo">
+		 SELECT * from member
+	     WHERE userid = #{userid}
+	  
+	</select>
+
+
 
 
 

@@ -61,7 +61,7 @@
 </script>
 </head>
 
-<body id="body-pd">
+<body id="body-pd"  style="background-color: rgb(214, 225, 237)">
 	<jsp:include page="shortHeadrInfo.jsp"></jsp:include>
 	
 	<!-- side nav bar -->
@@ -120,26 +120,28 @@
 							    <tr><th>번호</th><th>이름</th><th>직위</th><th>부서</th><th>이메일</th><th>연락처</th><th style="width: 7%;">즐겨찾기</th></tr>
 							  </thead>
 							  	<c:forEach var="address" items="${addressList}" varStatus="status">
-							  	<tr  style="vertical-align: middle;">
-							  		<td >${status.index+1 }</td>
-							  		<td><input type="text" name ="userid" id = "user${status.index}" value="${address.userid}" hidden="true">
-							  			${address.name }</td>
-							  		<c:if test="${address.dept.upDeptno == 100}">
-								  		<td>교수</td>							  		
-							  		</c:if>
-							  		<c:if test="${address.dept.upDeptno == 200}">
-								  		<td>교직원</td>
-								  	</c:if>
-								 	<c:if test="${address.dept.upDeptno == null }">
-								  		<td></td>
-								  	</c:if>
-							  		<td>${address.dept.dname}</td>
-							  		<td>${address.email}</td>
-							  		<td>${address.phone}</td>
-							  		<td>
-							  			<button type="button" class="btn btn-outline-danger" onclick="phoneLikeSave(${status.index})">+</button>
-							  		</td>
-							  	</tr>	
+								  	<c:if test="${address.dept.upDeptno == 200 || address.dept.upDeptno == 100}">
+									  	<tr  style="vertical-align: middle;">
+									  		<td >${status.index+1 }</td>
+										  		<td><input type="text" name ="userid" id = "user${status.index}" value="${address.userid}" hidden="true">
+										  			${address.name }</td>
+										  		<c:if test="${address.dept.upDeptno == 100}">
+											  		<td>교수</td>							  		
+										  		</c:if>
+										  		<c:if test="${address.dept.upDeptno == 200}">
+											  		<td>교직원</td>
+											  	</c:if>
+											 	<c:if test="${address.dept.upDeptno == null }">
+											  		<td></td>
+											  	</c:if>
+									  		<td>${address.dept.dname}</td>
+									  		<td>${address.email}</td>
+									  		<td>${address.phone}</td>
+									  		<td>
+									  			<button type="button" class="btn btn-outline-danger" onclick="phoneLikeSave(${status.index})">+</button>
+									  		</td>
+									  	</tr>	
+									  </c:if>
 							  	</c:forEach>
 							  <tbody>
 							  </tbody>

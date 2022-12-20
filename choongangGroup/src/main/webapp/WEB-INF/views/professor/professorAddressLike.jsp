@@ -59,36 +59,37 @@ function likeDelete(index){
 </head>
 
 <!-- card content -->  
-                    <div class="col-12 rounded-bottom overflow-auto  p-3" style="min-height: 550px;"> 
-                        <table class="table table-hover">
-                    		 <thead>
-							    <tr><th>이름</th><th>직위</th><th>부서</th><th>연락처</th><th>삭제</th></tr>
-							  </thead>
-							  	<c:forEach var="like" items="${likeList}" varStatus="status">
-							  	<tr id="deleteLine${status.index}">
-							  		<td><input type="text" name ="userid" id = "user${status.index}" value="${like.userid}" hidden="true">
-							  			<input type="text" name ="myuserid" id = "myuser${status.index}" value="${like.myUserid}" hidden="true" >
-							  			${like.member.name }</td>
-							  		<c:if test="${like.member.dept.upDeptno == 100}">
-								  		<td>교직원</td>							  		
-							  		</c:if>
-							  		<c:if test="${like.member.dept.upDeptno == 200}">
-								  		<td>교수</td>							  		
-							  		</c:if>
-							  		<c:if test="${like.member.dept.upDeptno == null}">
-								  		<td></td>							  		
-							  		</c:if>
-							  		<td>${like.member.dept.dname}</td>
-							  		<td>${like.member.phone}</td>
-							  		<td>
-							  			<button type="button" class="btn btn-outline-danger" onclick="likeDelete(${status.index})">삭제</button>
-							  		</td>
-							  	</tr>	
-							  	</c:forEach>
-							  <tbody>
-							  </tbody>
-                    	</table>
-                    	<!-- Scrollable modal -->
+<div class="col-12 rounded-bottom overflow-auto  p-3" style="min-height: 550px;"> 
+	<table class="table table-hover">
+		<thead>
+			<tr><th>이름</th><th>직위</th><th>부서</th><th>연락처</th><th>삭제</th></tr>
+		</thead>
+		<c:forEach var="like" items="${likeList}" varStatus="status">
+			<tr id="deleteLine${status.index}">
+				<td>
+					<input type="text" name ="userid" id = "user${status.index}" value="${like.userid}" hidden="true">
+					<input type="text" name ="myuserid" id = "myuser${status.index}" value="${like.myUserid}" hidden="true" >${like.member.name }
+				</td>
+				<c:if test="${like.member.dept.upDeptno == 100}">
+					<td>교직원</td>							  		
+				</c:if>
+				<c:if test="${like.member.dept.upDeptno == 200}">
+					<td>교수</td>							  		
+				</c:if>
+				<c:if test="${like.member.dept.upDeptno == null}">
+					<td></td>							  		
+				</c:if>
+				<td>${like.member.dept.dname}</td>
+				<td>${like.member.phone}</td>
+				<td>
+					<button type="button" class="btn btn-outline-danger" onclick="likeDelete(${status.index})">삭제</button>
+				</td>
+			</tr>	
+		</c:forEach>
+	<tbody>
+	</tbody>
+	</table>
+<!-- Scrollable modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

@@ -11,7 +11,7 @@ public interface AdminBookService {
 
 	void bookInsert(BookVo book);
 
-	List<BookVo> bookList();
+	List<BookVo> bookList(BookVo book);
 
 	BookVo bookDetailList(int bookId);
 
@@ -22,4 +22,6 @@ public interface AdminBookService {
 	void bookDelete(int bookId);
 
 	List<BookVo> bookSearchList(BookVo book);
+
+	int processTotal();
 	}

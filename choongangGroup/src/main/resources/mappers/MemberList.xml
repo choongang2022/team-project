@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ======= mapper 기본설정 ======= -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- ==== 루트 엘리먼트 & 네임스페이스 설정(프로젝트 전체 내에서 유일해야 한다.) ==== -->
+<mapper namespace="com.oracle.choongangGroup.dongho.admin.MemberListMapper">
+	<select id="memberPaging" parameterType="com.oracle.choongangGroup.dongho.admin.Criteria" resultType="com.oracle.choongangGroup.dongho.admin.MemberPagingDto">
+		<![CDATA[
+			SELECT * 
+			FROM
+		       	(
+		        select 
+		        	rownum rn, m.userid userid, m.name name, d.dname dname, m.email eamil, m.phone phone 
+		        from 
+		        	member m LEFT JOIN dept d 
+		        ON m.deptno = d.deptno 
+		        WHERE   rownum <= #{pageNum}*#{amount} 
+		        ) 
+     		WHERE rn > (#{pageNum} -1)*#{amount} 
+		]]>
+	</select>
+	
+	<delete id="deleteMember" parameterType="java.util.ArrayList">
+		DELETE member 
+		WHERE userid IN 
+		<foreach collection="deleteIdList" item="item" index="index" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+</mapper>

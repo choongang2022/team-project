@@ -12,6 +12,7 @@ import com.oracle.choongangGroup.sh.domain.ApplicationLec;
 import com.oracle.choongangGroup.sh.domain.ApplyTime;
 import com.oracle.choongangGroup.sh.domain.Attendance;
 import com.oracle.choongangGroup.sh.domain.Lecture;
+import com.oracle.choongangGroup.sh.domain.Report;
 import com.oracle.choongangGroup.sh.repository.ApplicationLecRepository;
 import com.oracle.choongangGroup.sh.repository.ApplyRepository;
 import com.oracle.choongangGroup.sh.repository.ApplyTimeRepository;
@@ -30,6 +31,7 @@ public class ApplyServiceImpl implements ApplyService {
 	private final ApplyTimeRepository atr;
 	private final LectureRepository lecr;
 	private final ApplicationLecRepository aplr;
+	private final ReportRepostiory rr;
 	
 	
 	
@@ -60,7 +62,6 @@ public class ApplyServiceImpl implements ApplyService {
 		int result = 0;
 		int count = atr.countByYearAndSemesterAndSelect(year, semester, select);
 		
-		//System.out.println("count------------------------>"+time.getId());
 			
 		//중복시 update
 		//update 기준은 select시 PK의 존재유무
@@ -79,18 +80,10 @@ public class ApplyServiceImpl implements ApplyService {
 	}
 
 	@Override
-	public ApplyTime findTime(int yearInt, int month, String select) {
-		String semester = "2";
-		String year = String.valueOf(yearInt);
+	public ApplyTime findTime(String year, String semester, String select) {	
 		ApplyTime applytime = new ApplyTime();
+		applytime = atr.findByYearAndSemesterAndSelect(year, semester, select);
 		
-		if(month>3 && month<=8) {
-			semester = "1";			
-			applytime = atr.findByYearAndSemesterAndSelect(year, semester, select);
-		}else {
-			semester = "2";
-			applytime = atr.findByYearAndSemesterAndSelect(year, semester, select);			
-		}
 		return applytime;
 	}
 	
@@ -124,6 +117,25 @@ public class ApplyServiceImpl implements ApplyService {
 	public List<ApplicationLec> applyList(String userid, String year, String semester) {
 		Long gubun = 2L; //수강신청 구분
 		return aplr.findAllByMember_UseridAndLecture_YearAndLecture_SemesterAndGubun(userid, year, semester, gubun);
+	}
+	
+	//수강한 년도 리스트
+	@Override
+	public List<ApplicationLec> yearList(String userid) {	
+		//aplr.findDistinctLecture_YearByMember_Userid(userid)
+			
+		return aplr.findByMember_Userid(userid);
+		
+	}
+	@Override
+	public ApplicationLec findByIdName(String userid, Long lecId) {
+		
+		return aplr.findByMember_UseridAndLecture_Id(userid,lecId);
+	}
+	@Override
+	public void saveReport(Report report) {
+		rr.save(report);
+		
 	}
 
 

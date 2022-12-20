@@ -23,7 +23,7 @@
 
 </head>
 
-<body id="body-pd">
+<body id="body-pd" style="background-color: rgb(214, 225, 237)">
 	<jsp:include page="shortHeadrInfo.jsp"></jsp:include>
 	
 	<!-- side nav bar -->

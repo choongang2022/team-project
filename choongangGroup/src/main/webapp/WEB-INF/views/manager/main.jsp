@@ -61,20 +61,6 @@ $(document).ready(function(){
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
                     <a href="/manager/main" class="nav__logo">교직원홈</a>
                 </div>
-                <div class="nav__list">
-                    <!-- <div href="#" class="nav__link collapses">
-                        <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
-                        <span class="nav_name">Projects</span>
-
-                        <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
-
-                        <ul class="collapse__menu" style="width: 180px; color: var(--sub-color);">
-                            <a href="#" class="collapse__sublink">공지사항 글쓰기</a>
-                            <a href="#" class="collapse__sublink">Group</a>
-                            <a href="#" class="collapse__sublink">Members</a>
-                        </ul>
-                    </div> -->
-                </div>
                 <a href="/logout" class="nav__link">
                     <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
                     <span class="nav_name">로그아웃</span>
@@ -194,7 +180,7 @@ $(document).ready(function(){
                       	<c:forEach var="message" items="${messageList}" varStatus="status" begin="0" end="5">
                       		<tbody>
                       			<tr>
-                      				<td><a href="" style="color: black;">${message.senderName}</a>님 쪽지가 왔습니다!</td>
+                      				<td><a href="/manager/messageDetail?messageId=${message.messageId }" style="color: black;">${message.senderName}</a>님 쪽지가 왔습니다!</td>
                       			</tr>       
                       		</tbody>
                       	</c:forEach>

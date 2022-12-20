@@ -59,9 +59,12 @@
 					<ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
 				</div>
 				<div class="nav__list">
-					<div href="/manager/notice/noticeList" class="nav__link collapses">
-						<ion-icon name="folder-outline" class="nav__icon"></ion-icon>
-						<span class="nav_name">공지사항 관리</span>
+					<div  class="nav__link collapses">
+						<a href="/notice/noticeList" style="color: white;">
+							<ion-icon name="folder-outline" class="nav__icon"></ion-icon>
+						</a>
+							<span class="nav_name">공지사항 관리</span>
+				
 
 						<ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 

@@ -109,7 +109,7 @@
                         <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">받은 쪽지함</span>
                     </a>
-                    <a href="#" class="nav__link">
+                    <a href="/manager/message/senderMessageList" class="nav__link">
                         <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">보낸 쪽지함</span>
                     </a>
@@ -145,7 +145,7 @@
             
                     <!-- card header -->
                     <div class="col-12 rounded-top text-white overflow-auto pt-2 fw-bold" style="background-color: rgb(39, 40, 70); height: 40px;"> 
-                        <i class="bi bi-bookmark-fill me-2"></i>받은 편지함
+                        <i class="bi bi-bookmark-fill me-2"></i>받은 쪽지함
                     </div>
                     <!-- card content -->  
                   <div class="col-12 rounded-bottom overflow-auto bg-light p-3" style="min-height: 550px;"> 
@@ -198,7 +198,7 @@
 
 					    </tbody>					    					    
 					</table>
-						<button onclick="deleteMessage()">
+						<button onclick="deleteMessage()" class="btn btn-outline-danger">
 					        <span>삭제</span>
 					    </button>
         	  </div>

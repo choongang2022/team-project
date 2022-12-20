@@ -153,6 +153,7 @@ function proUpdate(proFrm) {
 							<a href="/manager/studentManage" class="collapse__sublink">학생관리</a></br>
 							<a href="/manager/professorManage" class="collapse__sublink">교수관리</a></br>
 							<a href="/manager/EvaManagementForm" class="collapse__sublink">강의 평가 관리</a></br>
+							<a href="/manager/updateFormEvaluation" class="collapse__sublink">강의 평가 수정</a></br>
 						</ul>
 					</div>
 				</div>

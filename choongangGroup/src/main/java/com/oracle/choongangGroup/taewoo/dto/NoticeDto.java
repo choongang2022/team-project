@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NoticeDto extends BaseTimeEntity {
+	private Long noticeNum;
 	private String writerUserid;
 	private String noticeTitle;
 	private String noticeContent;
@@ -18,6 +19,7 @@ public class NoticeDto extends BaseTimeEntity {
 	
 	public static NoticeDto toDto(Notice notice) {
 		return new NoticeDto(
+				notice.getNoticeNum(),
 				notice.getNoticeTitle(),
 				notice.getNoticeContent(),
 				notice.getNoticeType(),

@@ -1,0 +1,1130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lecPlanPdf" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1db59e1a-fef3-45b2-9c1c-4d29114f3f69">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="prof_name" class="java.lang.String"/>
+	<field name="lec_name" class="java.lang.String"/>
+	<field name="major" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="plan_goal" class="java.lang.String"/>
+	<field name="plan_midterm_ratio" class="java.lang.String"/>
+	<field name="plan_final_ratio" class="java.lang.String"/>
+	<field name="plan_report_ratio" class="java.lang.String"/>
+	<field name="plan_attendance" class="java.lang.String"/>
+	<field name="plan_way" class="java.lang.String"/>
+	<field name="book_name" class="java.lang.String"/>
+	<field name="book_author" class="java.lang.String"/>
+	<field name="book_publisher" class="java.lang.String"/>
+	<field name="book_year" class="java.lang.String"/>
+	<field name="plan_eval_detail1" class="java.lang.String"/>
+	<field name="plan_eval_detail2" class="java.lang.String"/>
+	<field name="week_detail1" class="java.lang.String"/>
+	<field name="week_detail2" class="java.lang.String"/>
+	<field name="week_detail3" class="java.lang.String"/>
+	<field name="week_detail4" class="java.lang.String"/>
+	<field name="week_detail5" class="java.lang.String"/>
+	<field name="week_detail6" class="java.lang.String"/>
+	<field name="week_detail7" class="java.lang.String"/>
+	<field name="week_detail8" class="java.lang.String"/>
+	<field name="week_detail9" class="java.lang.String"/>
+	<field name="week_detail10" class="java.lang.String"/>
+	<field name="week_detail11" class="java.lang.String"/>
+	<field name="week_detail12" class="java.lang.String"/>
+	<field name="week_detail13" class="java.lang.String"/>
+	<field name="week_detail14" class="java.lang.String"/>
+	<field name="week_detail15" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="10" width="100" height="30" uuid="d39f1f62-ce07-4698-9221-8affb34cb073"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="19" isBold="true" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[강의계획서]]></text>
+			</staticText>
+			<image>
+				<reportElement stretchType="ContainerHeight" x="0" y="0" width="100" height="30" uuid="7a194aa0-d5e3-41ff-a510-1854c8f12c25"/>
+				<imageExpression><![CDATA["C:/Users/RyeYeong/Desktop/CA/choongangGroup/src/main/resources/static/images/logo1.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="412" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout"/>
+			<frame>
+				<reportElement x="0" y="11" width="555" height="59" uuid="b3d56c00-4441-4807-8cc9-8eebf35c0e00"/>
+				<textField>
+					<reportElement x="50" y="29" width="70" height="30" uuid="529a48be-c816-40fd-a5b9-71d423095d2b">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0fa5692a-6e10-4579-9c9e-135842f380b8"/>
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{prof_name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="29" width="50" height="30" backcolor="#E2E3E5" uuid="cc6d4e95-13f8-4092-b725-743ce8b3d791">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0fa5692a-6e10-4579-9c9e-135842f380b8"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[교수명]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="0" width="80" height="29" uuid="e7f7ebbc-1d65-407e-bc47-a714fde8a286"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="11" isBold="true" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[교수정보]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="160" y="29" width="100" height="30" uuid="64f24d04-25d2-4055-87bd-758473cb21e8">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{major}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="120" y="29" width="40" height="30" backcolor="#E2E3E5" uuid="c745aa43-fd9f-4608-8ec3-289b839da85a"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[학과]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="316" y="29" width="113" height="30" uuid="cfbe7336-b872-4153-bb96-0b7de42e6d4a">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="260" y="29" width="56" height="30" backcolor="#E2E3E5" uuid="4fae4ffe-2689-4896-88c0-58ff34408cfd"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[Email]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="468" y="29" width="87" height="30" uuid="6f653d84-1a2f-4fd5-8fd6-e8cb35642bde">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="429" y="29" width="39" height="30" backcolor="#E2E3E5" uuid="77faea73-40c5-456a-957e-7dde4e9cc77c"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[H.P]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="0" y="70" width="555" height="149" uuid="60e66243-824b-420e-af32-b0694dac3e65"/>
+				<staticText>
+					<reportElement x="0" y="0" width="80" height="29" uuid="346e9402-3676-4d74-8756-f24d19603a74"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="11" isBold="true" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[교과목정보]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="80" y="30" width="475" height="30" uuid="f8f5e1b1-dd95-439b-8676-1ccebfaf8845">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{lec_name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="30" width="80" height="30" backcolor="#E2E3E5" uuid="b8a63e56-c731-45c5-9257-692544324c3f"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[교과목명]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="80" y="60" width="475" height="30" uuid="c3a57f9a-7041-4eb8-9e92-49ef0d4ce1bc">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{plan_goal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="60" width="80" height="30" backcolor="#E2E3E5" uuid="a2ebc12b-230d-4f2c-b029-6c9bd82afadf"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[강좌목표]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="90" width="80" height="30" backcolor="#E2E3E5" uuid="5270267e-f0ed-406c-94a0-ca80497cc04b"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[평가기준]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="150" y="90" width="55" height="30" uuid="fcc84814-12d9-4868-a38d-a4987b4c0b7a">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{plan_midterm_ratio}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="80" y="90" width="70" height="30" backcolor="#E2E3E5" uuid="e7d075cd-71f9-4183-ba51-a17d4f6ff307"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[중간고사]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="275" y="90" width="55" height="30" uuid="41b11727-ca69-4e4b-8368-a08f5f6fc2bf">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{plan_final_ratio}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="205" y="90" width="70" height="30" backcolor="#E2E3E5" uuid="0544e8d2-4e6e-4c9d-81b0-0747cd8b0b08"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[기말고사]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="390" y="90" width="50" height="30" uuid="aaf891e5-6309-4e89-9ba7-3bfe3aafe84d">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{plan_report_ratio}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="330" y="90" width="60" height="30" backcolor="#E2E3E5" uuid="531e6057-91d6-4792-8479-8e70df4230a9"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[과제]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="500" y="90" width="55" height="30" uuid="ff9b1a61-c597-4d44-806f-db3343bf1061">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{plan_attendance}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="440" y="90" width="60" height="30" backcolor="#E2E3E5" uuid="18e46d4a-f326-4fe0-a297-bb0fae5e68a7"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[출석]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="80" y="120" width="475" height="30" uuid="b0cb8de2-25d5-4cd6-979e-c6a69cb5ef01">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{plan_way}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="120" width="80" height="30" backcolor="#E2E3E5" uuid="c501b98c-86b9-4a56-8a74-3f54087ca53b"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[강의운영방법]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="0" y="220" width="555" height="60" uuid="42915ade-d4b8-4798-806e-86c56ab9b6ce"/>
+				<staticText>
+					<reportElement x="0" y="0" width="80" height="29" uuid="5c6eec30-a139-414a-ae19-88a831127626"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="11" isBold="true" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[교재정보]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="50" y="30" width="100" height="30" uuid="699bbb04-f072-412f-bfcf-55dcbbe1111b">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{book_name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="30" width="50" height="30" backcolor="#E2E3E5" uuid="846a6d13-e4b6-4022-b39a-b21edb8dbe7f"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[도서명]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="190" y="30" width="110" height="30" uuid="e7c5bd48-aeeb-4fee-accb-27e6b0775ada">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{book_author}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="150" y="30" width="40" height="30" backcolor="#E2E3E5" uuid="4733e57f-e36a-4d96-aa86-212b8d67ae33"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[저자]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="340" y="30" width="108" height="30" uuid="264f539f-314f-4608-80a3-6f52bf6c27c3">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{book_publisher}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="300" y="30" width="40" height="30" backcolor="#E2E3E5" uuid="e6fc8f61-e787-4bf5-a935-e1920655abc0"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[출판사]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="503" y="30" width="52" height="30" uuid="b7b468b2-743a-4efc-b478-8f520bdddab0">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{book_year}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="448" y="30" width="55" height="30" backcolor="#E2E3E5" uuid="423a9798-5b89-4a49-82ce-94f7149c105a"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[출판연도]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="0" y="280" width="555" height="130" uuid="83f90cdb-d728-4a35-83c2-0642fc56731c">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+				</reportElement>
+				<staticText>
+					<reportElement x="0" y="0" width="80" height="30" uuid="a61ebdeb-9d55-4d39-85a1-d6543e281f30"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="11" isBold="true" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[세부평가]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="30" width="80" height="60" backcolor="#E2E3E5" uuid="e90b5b50-9b26-44a1-8047-263d1bfa6c11"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[중간/기말]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="90" width="80" height="40" backcolor="#E2E3E5" uuid="6fc4035c-b1a4-4880-956f-ccc44c5e8389"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[과제]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="80" y="30" width="475" height="60" uuid="35b41e18-db42-4f13-b84f-d0c782dcd245">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{plan_eval_detail1}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="80" y="90" width="475" height="40" uuid="67a639ed-e411-4cfa-b003-2738b2f56d7b">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{plan_eval_detail2}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+		<band height="332">
+			<frame>
+				<reportElement x="0" y="-2" width="555" height="334" uuid="995e9140-305b-47bd-9d37-2687e7531064"/>
+				<staticText>
+					<reportElement x="0" y="0" width="80" height="30" uuid="9bf1e377-15a8-4682-8280-31a868de1fc8">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="11" isBold="true" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[주차별수업계획]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="31" width="476" height="20" uuid="189df4f0-5c20-449d-bfb2-39b1788c3750">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="31" width="80" height="20" backcolor="#E2E3E5" uuid="3eb9b000-a3ba-4b60-87ac-fa8357ff2eba"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[1주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="51" width="476" height="20" uuid="b666db41-31bf-4cb3-8191-3041bb1a3216">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail2}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="51" width="80" height="20" backcolor="#E2E3E5" uuid="00e5e555-30a8-4d16-b7e4-981ec46d41f0"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[2주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="71" width="476" height="20" uuid="99b7652f-1dfd-4d96-8740-e63cb572f404">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail3}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="71" width="80" height="20" backcolor="#E2E3E5" uuid="f8923878-2391-4964-99bc-41e0ef66ddc3"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[3주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="91" width="476" height="20" uuid="915e88cf-2ca1-4222-bc0e-8ef97d692f9b">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail4}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="91" width="80" height="20" backcolor="#E2E3E5" uuid="64e7b006-b703-44a7-b529-43a319936433"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[4주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="111" width="476" height="20" uuid="db0ac4cf-5f9b-4d76-b798-c0157797cb4a">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail5}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="111" width="80" height="20" backcolor="#E2E3E5" uuid="b6af923b-5a34-4b7f-aa96-8a0ddce5c27a"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[5주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="131" width="476" height="20" uuid="fb647a13-2c0b-4ec7-8e78-350a759bc8c7">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail6}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="131" width="80" height="20" backcolor="#E2E3E5" uuid="723d25a3-722c-43a2-882f-aa0953a5e0e1"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[6주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="151" width="476" height="20" uuid="43d15546-7944-42f7-be70-57a4531420de">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail7}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="151" width="80" height="20" backcolor="#E2E3E5" uuid="1da7e70c-cbe7-4387-ac50-aa58bad0872d"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[7주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="171" width="476" height="20" uuid="480a9239-88d4-4c25-b380-cb9203822263">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail8}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="171" width="80" height="20" backcolor="#E2E3E5" uuid="dbb1e887-4c0b-4aca-9d0b-a379696891b2"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[8주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="191" width="476" height="20" uuid="5f4c67f5-c364-43d8-803b-941ad426f729">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail9}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="191" width="80" height="20" backcolor="#E2E3E5" uuid="91ac4039-4718-474b-b44f-d3e49b7512c0"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[9주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="211" width="476" height="20" uuid="81c449a7-6606-4968-b24c-93fc2f7bc10b">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail10}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="211" width="80" height="20" backcolor="#E2E3E5" uuid="9596cd46-d681-4bac-983c-4aef3f20b9d8"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[10주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="231" width="476" height="20" uuid="8df29b7e-82a6-42d3-8d9a-94200609e70a">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail11}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="231" width="80" height="20" backcolor="#E2E3E5" uuid="aff71568-5361-42a4-85e1-fcb8503ecdde"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[11주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="251" width="476" height="20" uuid="13bc1326-6c53-4450-aa24-3c6e185a88b4">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail12}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="251" width="80" height="20" backcolor="#E2E3E5" uuid="8e6a4aa8-4768-4ccd-9908-444a0f0ed3fe"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[12주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="271" width="476" height="20" uuid="654f1a9e-718a-4e5e-a864-bd9dde94fa74">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail13}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="271" width="80" height="20" backcolor="#E2E3E5" uuid="57b16f70-b7b5-470f-87ab-b4d077f79394"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[13주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="291" width="476" height="20" uuid="9d79882d-42e9-4413-84b3-93bc1b6f53e1">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail14}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="291" width="80" height="20" backcolor="#E2E3E5" uuid="cf4889e9-1e64-43fc-b1ac-2af6f994b591"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[14주차]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="311" width="476" height="20" uuid="d8c77f23-750b-401f-b5bf-01ae3262e763">
+						<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					</reportElement>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{week_detail15}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="311" width="80" height="20" backcolor="#E2E3E5" uuid="64c2c4fb-88e3-4868-9504-afec9cfb845a"/>
+					<box>
+						<pen lineColor="#B4B4B4"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#B4B4B4"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="fonts/malgun.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[15주차]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

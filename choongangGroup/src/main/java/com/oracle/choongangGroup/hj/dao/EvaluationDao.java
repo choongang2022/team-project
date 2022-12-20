@@ -3,6 +3,7 @@ package com.oracle.choongangGroup.hj.dao;
 import java.util.List;
 
 import com.oracle.choongangGroup.hj.model.EvaluationVo;
+import com.oracle.choongangGroup.hj.model.MemberVo;
 
 public interface EvaluationDao {
 
@@ -21,6 +22,8 @@ public interface EvaluationDao {
 
 
 	int updateEv(EvaluationVo evaluationVo);
+
+	MemberVo infoList(String userid);
 
 
 

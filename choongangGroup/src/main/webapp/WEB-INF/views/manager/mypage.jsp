@@ -34,7 +34,7 @@ window.addEventListener('load', function(){
             }
         }).open();
     });
-});
+    });
 
 
 const autoHyphen = (target) => {
@@ -95,6 +95,17 @@ function readURL(input) {
   }
   
 }
+
+.passUpdate:link, .passUpdate:visited {
+	 background-color: #12192c;
+     padding: 6px 12px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     color: white;
+     border-radius: 0.375rem;
+}
+
 
 </style>
 </head>
@@ -212,8 +223,9 @@ function readURL(input) {
 							  <div class="col-md-10">
 								<input type="file" name="file1" id="file1" value="${mypage.image }" style="display: none;" onchange="readURL(this)">
 							  </div>
-							  <div class="col-md-3">
+							  <div class="col-md-6">
 							    <button type="submit" class="btn btn-secondary" style="margin: auto;">변경사항 저장</button>
+							    <a href="/updatePasswordForm" class="passUpdate">비밀번호 번경하기</a>
 							  </div>
 							</form>
 						</div>

@@ -258,6 +258,10 @@ $(document).ready(function(){
 	/***** 엑셀다운  ****/
 	$('#scoreExcelDown').click(function(){
 		var id = $('#lecId').val();
+		if(id == null || id == '') {
+			alert("먼저 강의를 선택해 주세요.");
+			return false;
+		}
 		location.href="scoreExcelDown?id=" + id;
 	});
 	//성적마감버튼
@@ -495,7 +499,6 @@ function scoreCalfun(){
 
 </script>
 <style>
-
 	table { 
 		border-collapse: collapse; width: 100%;
 	}
@@ -512,12 +515,11 @@ function scoreCalfun(){
 	  position: sticky;
 	  top: 0;
 	}
-		
 </style>
 	
 </head>
 
-<body id="body-pd">
+<body id="body-pd"  style="background-color: rgb(214, 225, 237)">
 	<jsp:include page="shortHeadrInfo.jsp"></jsp:include>
 	
 	<!-- side nav bar -->

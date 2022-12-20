@@ -67,14 +67,16 @@ public class LikeRepositoryImpl implements LikeRepository {
 		int lecResult = lecOverlap(applyLec,year,semester); //강의 중복 조회 / 1-->중복없음, 0-->중복있음
 		int timeResult = timeOverLap(applyLec,year,semester);//시간 중복 조회 / 1-->중복없음, 2-->중복있음
 		if(lecResult == 1 && timeResult == 1) { //중복된 강의가 없을때만 등록
-//			Long count = applyLec.getMember().getCount();
-//			Long unitScore = applyLec.getLecture().getUnitScore();
-//			applyLec.getMember().setCount(count + unitScore);
-//			if(applyLec.getMember().getCount()>21) { //총 신청학점이 21학점 초과시 신청불가
-//				result = 3;
-			int count = 0;
-			count += applyLec.getLecture().getUnitScore();
-			if(count>21) {
+			List<ApplicationLec> list = em.createQuery("Select a from ApplicationLec a where a.member.userid = :userid and a.lecture.year = :year "
+					+ "and a.lecture.semester = :semester and a.gubun = 1L",ApplicationLec.class)
+					.setParameter("userid", userid).setParameter("year", year).setParameter("semester", semester).getResultList();
+		if(list.size()==0) {
+			applyLec.getMember().setCount(0L);
+			}
+			Long count = applyLec.getMember().getCount();
+			Long unitScore = applyLec.getLecture().getUnitScore();
+			applyLec.getMember().setCount(count + unitScore);
+			if(applyLec.getMember().getCount()>21) {
 				result = 3;
 			}else {
 				em.persist(applyLec); 

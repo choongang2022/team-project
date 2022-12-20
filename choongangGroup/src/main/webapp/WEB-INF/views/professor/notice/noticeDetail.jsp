@@ -26,7 +26,7 @@
 </script>
 </head>
 
-<body class="" id="body-pd" onload="printClock()">
+<body class="" id="body-pd" onload="printClock()"  style="background-color: rgb(214, 225, 237)">
    <jsp:include page="../shortHeadrInfo.jsp"></jsp:include>
 	
 	<!-- side nav bar -->

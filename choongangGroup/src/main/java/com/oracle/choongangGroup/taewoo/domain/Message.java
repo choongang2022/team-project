@@ -17,6 +17,7 @@ import com.oracle.choongangGroup.changhun.JPA.Member;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -29,6 +30,7 @@ import lombok.NoArgsConstructor;
 					initialValue = 1,
 					allocationSize = 1
 					)
+@EqualsAndHashCode(callSuper = false)
 public class Message extends BaseTimeEntity {
 	
 	@Id

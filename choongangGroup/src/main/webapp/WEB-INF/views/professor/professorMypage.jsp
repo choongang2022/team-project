@@ -85,7 +85,7 @@ function readURL(input) {
 
 .card-img-top {
   width: 100%;
-  height: 250px;
+  height: 270px;
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-color: #e0e0e0;
@@ -96,10 +96,19 @@ function readURL(input) {
   
 }
 
+.passUpdate:link, .passUpdate:visited {
+	 background-color: #12192c;
+     padding: 6px  	14px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     color: white;
+     border-radius: 0.375rem;
+}
 </style>
 </head>
 
-<body id="body-pd">
+<body id="body-pd"  style="background-color: rgb(214, 225, 237)">
 	<jsp:include page="shortHeadrInfo.jsp"></jsp:include>
 	
 	<!-- side nav bar -->
@@ -175,8 +184,9 @@ function readURL(input) {
 							  <div class="col-md-10">
 								<input type="file" name="file1" id="file1" value="${mypage.image }" style="display: none;" onchange="readURL(this)">
 							  </div>
-							  <div class="col-md-3">
-							    <button type="submit" class="btn btn-secondary" style="margin: auto;">변경사항 저장</button>
+							  <div class="col-md-6">
+							    <button type="submit" class="btn btn-secondary me-1	" style="margin: auto;">변경사항 저장</button>
+							    <a href="/updatePasswordForm" class="passUpdate">비밀번호 번경하기</a>
 							  </div>
 							</form>
 						</div>

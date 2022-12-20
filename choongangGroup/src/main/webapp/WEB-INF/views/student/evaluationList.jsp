@@ -68,101 +68,95 @@
 	</nav>
 	<!-- /header -->
 	<!-- side nav bar -->
-	<div class="l-navbar" id="navbar">
-		<nav class="navv">
-			<div>
-				<div class="nav__brand">
-					<ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-					<a href="#" class="nav__logo">Bedimcode</a>
-				</div>
-				<div class="nav__list">
-					<a href="#" class="nav__link active"> <ion-icon
-							name="home-outline" class="nav__icon"></ion-icon> <span
-						class="nav_name">Dashboard</span>
-					</a> <a href="#" class="nav__link"> <ion-icon
-							name="chatbubbles-outline" class="nav__icon"></ion-icon> <span
-						class="nav_name">Messenger</span>
-					</a>
+    <div class="l-navbar" id="navbar">
+        <nav class="navv">
+            <div>
+                <div class="nav__brand">
+                    <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
+                   <!--  <a href="#" class="nav__logo">카테고리</a> -->
+                </div>
+                <div class="nav__list">
+                   <div href="#" class="nav__link collapses">
+                        <i class="bi bi-person-rolodex"></i>
+                        <span class="nav_name">학사관리</span>
 
-					<div href="#" class="nav__link collapses">
-						<ion-icon name="folder-outline" class="nav__icon"></ion-icon>
-						<span class="nav_name">Projects</span>
+                        <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 
-						<ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+                        <ul class="collapse__menu" style="width: 200px;">
+                            <li><a href="/student/listEmp" class="collapse__sublink">학적정보 조회</a></li>
+                            <li><a href="/student/lectureListForm" class="collapse__sublink">강의목록 조회</a></li>
+                            
+                            <li><a href="/student/timetable" class="collapse__sublink">시간표 조회</a></li>
+                           
 
-						<ul class="collapse__menu">
-							<a href="#" class="collapse__sublink">Data</a>
-							<a href="#" class="collapse__sublink">Group</a>
-							<a href="#" class="collapse__sublink">Members</a>
-						</ul>
-					</div>
+                        </ul>
+                    </div>
+                    
 
-					<a href="#" class="nav__link"> <ion-icon
-							name="pie-chart-outline" class="nav__icon"></ion-icon> <span
-						class="nav_name">Analytics</span>
-					</a>
+               <a href="/student/gradeList" class="nav__link">
+                       <i class="bi-mortarboard"></i>
+                       <span class="nav_name">&nbsp;성적 관리</span>
+                   </a>
+      
 
-					<div href="#" class="nav__link collapses">
-						<ion-icon name="people-outline" class="nav__icon"></ion-icon>
-						<span class="nav_name">Team</span>
+               <a href="/student/evaluationList" class="nav__link">
+                       <i class="bi-pencil"></i>
+                       <span class="nav_name">&nbsp;강의 평가</span>
+                   </a>
 
-						<ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 
-						<ul class="collapse__menu">
-							<a href="#" class="collapse__sublink">Data</a>
-							<a href="#" class="collapse__sublink">Group</a>
-							<a href="#" class="collapse__sublink">Members</a>
-						</ul>
-					</div>
+               <a href="/student/applyIndex" class="nav__link">
+                       <i class="bi bi-box-arrow-up-right"></i>
+                       <span class="nav_name">&nbsp;수강 신청</span>
+                   </a>
+                    <div href="/student/shopList" class="nav__link collapses">
+                        <i class="bi bi-book"></i>
+                        <span class="nav_name">&nbsp;교재 구매</span>
 
-					<a href="#" class="nav__link"> <ion-icon
-							name="settings-outline" class="nav__icon"></ion-icon> <span
-						class="nav_name">Settings</span>
-					</a>
-				</div>
-				<a href="#" class="nav__link"> <ion-icon name="log-out-outline"
-						class="nav__icon"></ion-icon> <span class="nav_name">Log
-						out</span>
-				</a>
-			</div>
-		</nav>
-	</div>
-	<!-- /side nav bar -->
+                        <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+                        <ul class="collapse__menu" style="width: 200px;">
+                            <li><a href="/student/shopList" class="collapse__sublink">교재 목록</a></li>
+                            <li><a href="/student/cartList" class="collapse__sublink">장바구니</a></li>
+                            <li><a href="/student/orderList" class="collapse__sublink">주문 목록</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="/logout" class="nav__link">
+                    <i class="bi-power"></i>
+                    <span class="nav_name">&nbsp; Log out</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+    <!-- /side nav bar -->
 	<!-- main content -->
-	<div class="container-fluid w-100"
-		style="background-color: rgb(214, 225, 237)">
-		<div class="row">
+   <div class="container-fluid w-100" style=" background-color: rgb(214, 225, 237)">
+      <div class="row">
+      
+         <!-- content header -->
+         <div class="col-12 px-5 py-4" style=" background-color: rgb(95, 142, 241)">
+            <div class="d-flex flex-row mb-2 mt-2">
+               <div>
+                  <span class="text-white h4">안녕하세요. <span class="fw-bold">${member.name}</span>님!</span>
+               </div>
+               <div class="border border-1 border-white rounded-pill text-white ms-2"  style="height: 25px;">
+                  <div class="font09 align-items-center">&nbsp; 학생  &nbsp;</div>
+               </div>
+               <div><i class="text-white bi-gear-fill mx-2">  </i></div>
+            </div>
+            <div class="row">
 
+            <div>
+               <span class="text-white font09">${member.major}과&nbsp; &nbsp; ${member.grade}&nbsp;학년 </span>
+            </div>
+            </div>
+            <div class="d-flex flex-low mb-2">
+               <div><i class="bi bi-envelope-fill text-white"></i></div>
+               <div><span class="text-white ms-2 font09">${member.email}</span></div>
+            </div>
 
-			<!-- content header -->
-			<div class="col-12 pt-4"
-				style="height: 150px; background-color: rgb(95, 142, 241)">
-				<div class="d-flex flex-row mb-3">
-					<div>
-						<span class="text-white h4">안녕하세요. <span class="fw-bold">김중앙 </span>님!
-						</span>
-					</div>
-					<div
-						class="border border-1 border-white border-bottom rounded-pill text-white px-2 pt-1 ms-2 h6">교수</div>
-					<div>
-						<i class="text-white bi-gear-fill mx-2"></i>
-					</div>
-				</div>
-				<div class="row">
-					<div>
-						<span class="text-white h6">이공대학 컴퓨터공학과 | 정교수</span>
-					</div>
-				</div>
-				<div class="d-flex flex-low">
-					<div>
-						<i class="bi bi-envelope-fill text-white"></i>
-					</div>
-					<div>
-						<span class="text-white ms-3">test123@naver.com</span>
-					</div>
-				</div>
-
-			</div>
+         </div>
 			<main class="col-9 h-100 w-100">
 				<div class="row m-5">
 					<!-- card header -->

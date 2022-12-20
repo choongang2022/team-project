@@ -67,6 +67,8 @@
 		document.getElementById("date").value = Today;
 		$('input[name=writeday]').attr('value',Today);
 		
+		getDate();
+		
 	});
 	
 	
@@ -115,7 +117,7 @@
 								$.each(data, function(index, item){
 								   html += "<tr>";
 								   html += "<td style='width: 40px; height: 10px; padding-left:2px;'> ";
-								   html += "<input type='radio' name='radioBox' class='"+ index + "' value='"+item.userid+','+item.name+','+item.dname+"' required='required'>";
+								   html += "<input type='radio' name='radioBox' class='"+ index + "' value='"+item.userid+','+item.name+','+item.position+"' required='required'>";
 		                           html += "</td>";
 		                           html += "<td style='width: 80px; height: 10px; padding-left:2px;' class='mem_userid'>";
 		                           html += item.userid;
@@ -161,7 +163,7 @@
 								$.each(data, function(index, item){
 								   html += "<tr>";
 								   html += "<td style='width: 40px; height: 10px; padding-left:2px;'> ";
-								   html += "<input type='radio' name='radioBox2' class='"+ index + "' value='"+item.userid+','+item.name+','+item.dname+"'>";
+								   html += "<input type='radio' name='radioBox2' class='"+ index + "' value='"+item.userid+','+item.name+','+item.position+"'>";
 		                           html += "</td>";
 		                           html += "<td style='width: 80px; height: 10px; padding-left:2px;' class='mem_userid'>";
 		                           html += item.userid;
@@ -284,6 +286,20 @@
 	function getEndDate() {
 		const approval_end = document.getElementById('approval_end').value;
 	 	document.getElementById('approval_start').setAttribute("max", approval_end);
+	}
+	
+	function getDate() {
+		var date = new Date();
+		var Year = date.getFullYear();
+		var Month = "-" + (date.getMonth()+1);
+		var Day = "-" + date.getDate();
+		
+		if(Month.length < 2 ) Month = "0" + Month;
+		if(Day.length < 2 ) Day = "0" + Day;
+		
+		var Today = Year.toString() + Month + Day;
+		
+	 	document.getElementById('approval_start').setAttribute("min", Today);
 	}
 	
 </script>

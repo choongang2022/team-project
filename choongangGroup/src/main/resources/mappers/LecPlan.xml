@@ -6,7 +6,7 @@
 
 <!-- ==== 루트 엘리먼트 & 네임스페이스 설정(프로젝트 전체 내에서 유일해야 한다.) ==== -->
 <mapper namespace="com.oracle.choongangGroup.dongho.professor.mappers.LecPlanMapper">
-	<insert id="insertPlan" parameterType="com.oracle.choongangGroup.dongho.professor.lecturePlan.LecPlanDto">
+	<insert id="insertPlan" parameterType="com.oracle.choongangGroup.dongho.professor.lecturePlan.dto.LecPlanDto">
 		INSERT INTO lec_plan (
 								lec_id, 
 								plan_goal, 
@@ -39,14 +39,21 @@
 				)
 	</insert>
 	
-	<delete id="deletePlanAndLec" parameterType="Long">
+	<delete id="deletePlanAndLec" parameterType="hashMap">
 		DECLARE
 		BEGIN
-			DELETE lec_plan 
-			WHERE lec_id = #{lec_id} ;
+			<if test='map.check == 1 or map.check == 2'>
+				DELETE lec_plan 
+				WHERE lec_id = #{map.lec_id} ;
+			</if>
+			<if test='map.check == 0 or map.check == 1'>
+				UPDATE lecture l 
+				SET    l.lec_file_name = '', 
+					   l.lec_file_path = '' 
+				WHERE  1=1 
+				AND    lec_id = #{map.lec_id};
+			</if>
 			
-			DELETE lec_plan_week 
-			WHERE lec_id = #{lec_id} ;
 		END;
 	</delete>
 </mapper>

@@ -3,6 +3,7 @@ package com.oracle.choongangGroup.hs.managerPage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +25,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.oracle.choongangGroup.changhun.JPA.Member;
 import com.oracle.choongangGroup.dongho.auth.GetMember;
+import com.oracle.choongangGroup.sh.domain.ApplyTime;
+import com.oracle.choongangGroup.sh.service.ApplyService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,6 +41,7 @@ public class ManagerPageController {
 	private final ManagerPageRepository mr;
 	private final ManagerPageRepositoryImpl mi;
 	private final GetMember gm;
+	private final ApplyService as; //신효 
 	
 	
 	// ------------------ 마이페이지 --------------------------
@@ -251,5 +256,46 @@ public class ManagerPageController {
 		
 		mr.save(findMember);
 		return "redirect:/manager/professorManage";
+	}
+	
+	//----------------- 신효 : 수강신청/장바구니 기간 등록-------------------------------
+	//장바구니, 수강신청 기간 등록 폼
+	@GetMapping(value = "registerTimeForm")
+	public String registerTimeForm(Model model){
+		String year = getYear();
+		String semester = getSemester();
+		model.addAttribute("year", year);
+		model.addAttribute("semester", semester);
+		return "manager/registerTimeForm";
+	}
+
+	//기간 등록
+	@GetMapping(value = "registerTime")
+	public String registerTime(ApplyTime applyTime) { //@ModelAttribute 생략
+		
+		int result = as.register(applyTime);
+	
+		return "manager/registerTime";
+	}
+	
+	//현재 년도 구하기
+	public String getYear() {
+		LocalDate now = LocalDate.now();
+		String year = String.valueOf(now.getYear());
+		return year;
+	}
+	
+	//현재 학기 구하기
+	public String getSemester() {
+		LocalDate now = LocalDate.now();
+		int month = now.getMonthValue();
+		String semester = "";
+		if(month>=1 && month<=6) {
+			semester = "1";					
+		}else {
+			semester = "2";			
+		}
+		
+		return semester;
 	}
 }

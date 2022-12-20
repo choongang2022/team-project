@@ -224,7 +224,7 @@ function readURL(input) {
                 <div class="row m-5">
                     <!-- card header -->
                     <div class="col-12 rounded-top text-white overflow-auto pt-2 fw-bold" style="background-color: rgb(39, 40, 70); height: 40px;"> 
-                        <i class="bi bi-bookmark-fill me-2"></i>학생서비스 <i class="bi bi-chevron-right"></i>학사관리 <i class="bi bi-chevron-right"></i>학적조회
+                        <i class="bi bi-bookmark-fill me-2"></i>학생서비스 <i class="bi bi-chevron-right"></i>학사관리 <i class="bi bi-chevron-right"></i>학적조회수정
                     </div>
                     <!-- card content -->  
                     <div class="col-12 rounded-bottom overflow-auto bg-light p-3" style="min-height: 550px;"> 
@@ -237,7 +237,7 @@ function readURL(input) {
 
 <form action="updateMember" method="post" enctype="multipart/form-data"   >
 
-<table class="table table-striped" >
+<table class="table table-striped-columns" style="table-layout: fixed;" >
 
 	 <input type="hidden" name="userid" value="${userid }">  
 		
@@ -262,31 +262,28 @@ function readURL(input) {
 			<tr><th>성명</th><td>${member.name } </td> 			
 			<th>학번</th><td>${member.userid }</td>         
 			 <th>국적</th><td>${member.nation }</td></tr>
-			<tr><th>연락처</th><td> 
+			<tr><th>휴대전화</th><td> 
 			<input type="text" name="phone" required="required" id="phone" oninput="autoHyphen(this)" maxlength="13"value="${member.phone}"></td>		  	
 			<th>학년</th><td>	${member.grade}</td>         
 			
-			<th>주소</th><td>
-			<input type="text "   name="address"  id="address" required="required" value="${member.address }">
-			 <button class="btn btn-outline-secondary" type="button" id="address_kakao">주소찾기</button>
-			</td></tr></tr>
+			<th>비상연락망</th><td>
+			<input type="text" name="subphone" name="subphone" id="subphone" oninput="autoHyphen2(this)" maxlength="13"    required="required"  value="${member.subphone }"></td></tr> 
 			
-
+			</td></tr></tr>
 			<tr><th>성별</th><td>${member.gender }</td> 			
 		    <th>학적상태</th><td>${member.stud_status }</td>      
 			<th>E-Mail</th><td>
 			<input type="email" name="email" required="required" value="${member.email }"></td></tr>
 			<tr><th>입학 일자</th><td>${member.admission}</td>          
-			<th>졸업여부</th><td>${member.graduate }</td>      
+			<th>입학전형</th><td>${member.adm_type }</td>      
 			<th>지도교수</th><td>${member.main_prof }</td></tr> 
-			<tr><th>계좌번호</th><td>${member.account}</td> 			
-			<th>입학전형</th><td>${member.adm_type}</td>        
-			<th>비상연락망</th><td>
-			<input type="text" name="subphone" name="subphone" id="subphone" oninput="autoHyphen2(this)" maxlength="13"    required="required"  value="${member.subphone }"></td></tr> 
-			<tr><th>입금은행</th><td>${member.bank }</td> 			
-			<th>전공(소속학과)</th><td>${member.major }</td>          	
-			<th>부전공</th><td>${member.sub_major }</td>         
-		
+			<tr><th>전공(소속학과)</th><td>${member.major}</td> 			
+	      	<th>부전공</th><td>${member.sub_major }</td> 	
+			<th>주소</th><td>
+			<input type="text "   name="address"  id="address" required="required" value="${member.address }">       
+			<button  class="btn btn-outline-secondary" type="button" id="address_kakao">주소찾기</button>
+	       
+
 
 
 </table>
@@ -301,23 +298,10 @@ function readURL(input) {
                        
                        
                        
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
                     </div>
                     <!-- footer -->
                     <footer class="col-12" style="height: 60px;">
-                        footer
+                       <jsp:include page="../footer.jsp"></jsp:include>
                     </footer>    
                 </div>
             </main>

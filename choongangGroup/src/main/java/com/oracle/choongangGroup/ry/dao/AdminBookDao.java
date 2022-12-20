@@ -12,7 +12,7 @@ public interface AdminBookDao {
 
 	void bookInsert(BookVo book);
 
-	List<BookVo> bookList();
+	List<BookVo> bookList(BookVo book);
 
 	BookVo detailBookList(int bookId);
 
@@ -23,5 +23,7 @@ public interface AdminBookDao {
 	void deleteBook(int bookId);
 
 	List<BookVo> bookSearchList(BookVo book);
+
+	int processTotal();
 
 }

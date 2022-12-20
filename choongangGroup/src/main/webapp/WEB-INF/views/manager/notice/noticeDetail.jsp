@@ -37,15 +37,17 @@
 	}
 	
 	function updateNotice(){
-		alert("수정완료!");
+		alert("수정시작!");
 		var vnoticeNum = $("#noticeNum").val();
 		var vnoticeTitle = $("#noticeTitle2").val();
 		var vnoticeContent = $("#noticeContent2").val();
 		var vnoticeHit = $("#noticeHit").val();
+		var vnoticeType = $("#noticeType").val();
 			
 		console.log("vnoticeNum -> " + vnoticeNum);
 		console.log("vnoticeTitle -> " + vnoticeTitle);
 		console.log("vnoticeNum -> " + vnoticeContent);
+		console.log("vnoticeType -> " + vnoticeType);
 		
 		if(vnoticeTitle === null || !vnoticeTitle){
 			alert("제목을 입력하세요.");
@@ -60,9 +62,10 @@
 				
 		$.ajax({
 			url		 : "/manager/updateNotice",
-			data	 : { noticeNum : vnoticeNum , noticeTitle : vnoticeTitle, noticeContent : vnoticeContent, noticeHit : vnoticeHit },
+			data	 : { noticeNum : vnoticeNum , noticeTitle : vnoticeTitle, noticeContent : vnoticeContent, noticeHit : vnoticeHit , noticeType : vnoticeType },
 			dataType : 'text',
 			success	 : function(data){
+				alert("수정완료!");
 				$("#noticeTitle1").val(vnoticeTitle);
 				$("#noticeContent1").val(vnoticeContent);
 			}
@@ -88,7 +91,7 @@
 			data	: {noticeNum : dnoticeNum},
 			success : function(data){
 				alert("삭제 되었습니다.");
-				location.href = "/manager/notice/noticeList";
+				location.href = "/notice/noticeList";
 			}
 		});
 	}
@@ -129,8 +132,9 @@
 				</div>
 				<div class="nav__list">
 					<div href="/manager/notice/noticeList" class="nav__link collapses">
-						<ion-icon name="folder-outline" class="nav__icon"></ion-icon>
-						<span class="nav_name"><a style="text-decoration: none; color: white;"  href="/notice/noticeList">공지사항 관리</a></span>
+						<a style="text-decoration: none; color: white;"  href="/notice/noticeList"><ion-icon name="folder-outline" class="nav__icon"></ion-icon>
+						</a>
+						<span class="nav_name">공지사항 관리</span>
 
 						<ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 
@@ -165,7 +169,8 @@
 		                	<div class="container">
 		                      	<div class="mb-3">                  		
 			                      	<input id="noticeNum" type="hidden" value="${notice.noticeNum}">
-			                      	<input id="noticeHit" type="hidden" value="${notice.noticeHit}">    
+			                      	<input id="noticeHit" type="hidden" value="${notice.noticeHit}">
+			                      	<input id="noticeType" type="hidden" value="${notice.noticeType}">    
 			                   </div>                 	
 		                       <div class="mb-3">
 		                     		<label class="form-label">제목</label>

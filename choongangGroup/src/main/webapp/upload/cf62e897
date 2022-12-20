@@ -1,0 +1,140 @@
+--**********************************************
+----------------- 강의 ----------------------
+--**********************************************
+
+/*강의코드 , 강의명, 교수명, 대상학년, 강의실, 강의동, 강의요일1,강의요일2,강의교시1,강의교시2, 강의시간1,강의시간2,
+수강인원, 강의정원, 강의상태[기본:'1', 승인:'0'], 강의시수[14,15], 이수구분[교양,전선,전필],이수구분코드[C,S,M], 강의학점, 
+강의계획서 파일위치, 강의계획서 문서이름, 년도 , 학기, 전공구분, 강의 시작일[ex)2022-12-16], 성적입력상태 [기본:'0', 성적입력마감:'1'(조회가능)]*/
+-- 강의계획서 파일 / 이름 공백상태, 일주일에 한번인 과목은 요일하나가 공백
+
+
+-- 데이터 베이스
+insert into Lecture(lec_id,,lec_name,prof_name,lec_target_grade,lec_room,lec_building,lec_day1,lec_day2,lec_time1,lec_time2,lec_hour1,lec_hour2,lec_count_stud,lec_max_stud,lec_status
+,lec_max_count,lec_type,lec_typecode,lec_unit_score,lec_file_path,lec_file_name,lec_year,lec_semester,major_gubun,lec_start,lec_sco_status)
+values( 
+   1
+  ,'데이터베이스'
+ 	,'정연식'
+	,1
+	,'301호'
+	,'중앙동 '
+	,'화'
+	,'목'
+	,'2'
+	,'2'
+	,'2'
+	,'2'
+	,18
+	,20
+	,'0'	
+	,14
+	,'전필'
+	,'M'
+	,3
+	,''
+	,''
+	,'2022'
+	,'2'
+	,'컴퓨터공학과'
+	,'2022-09-01'
+	,'0'
+	);
+
+
+-- 알고리즘
+insert into Lecture(lec_id,,lec_name,prof_name,lec_target_grade,lec_room,lec_building,lec_day1,lec_day2,lec_time1,lec_time2,lec_hour1,lec_hour2,lec_count_stud,lec_max_stud,lec_status
+,lec_max_count,lec_type,lec_typecode,lec_unit_score,lec_file_path,lec_file_name,lec_year,lec_semester,major_gubun,lec_start,lec_sco_status)
+values( 
+   	2
+  ,'알고리즘'
+ 	,'김성연'
+	,4
+	,'301호'
+	,'중앙동 '
+	,'화'
+	,'목'
+	,'4'
+	,'4'
+	,'2'
+	,'2'
+	,18
+	,20
+	,'0'	
+	,14
+	,'전필'
+	,'M'
+	,3
+	,''
+	,''
+	,'2022'
+	,'2'
+	,'컴퓨터공학과'
+	,'2022-09-02'
+	,'0'
+	);
+
+
+
+-- 사물인터넷
+insert into Lecture(lec_id,,lec_name,prof_name,lec_target_grade,lec_room,lec_building,lec_day1,lec_day2,lec_time1,lec_time2,lec_hour1,lec_hour2,lec_count_stud,lec_max_stud,lec_status
+,lec_max_count,lec_type,lec_typecode,lec_unit_score,lec_file_path,lec_file_name,lec_year,lec_semester,major_gubun,lec_start,lec_sco_status)
+values( 
+   3
+  ,'사물인터넷'
+ 	,'유상신'
+	,2
+	,'302호'
+	,'정보관 '
+	,'월'
+	,'수'
+	,'1'
+	,'2'
+	,'2'
+	,'2'
+	,18
+	,20
+	,'0'	
+	,15
+	,'전선'
+	,'S'
+	,2
+	,''
+	,''
+	,'2022'
+	,'2'
+	,'소프트웨어과'
+	,'2022-09-01'
+	,'0'
+	);
+
+-- 빅데이터실무
+insert into Lecture(lec_id,,lec_name,prof_name,lec_target_grade,lec_room,lec_building,lec_day1,lec_day2,lec_time1,lec_time2,lec_hour1,lec_hour2,lec_count_stud,lec_max_stud,lec_status
+,lec_max_count,lec_type,lec_typecode,lec_unit_score,lec_file_path,lec_file_name,lec_year,lec_semester,major_gubun,lec_start,lec_sco_status)
+values( 
+   4
+  ,'빅데이터실무'
+ 	,'노은아'
+	,1
+	,'302호'
+	,'정보관 '
+	,'수'
+	,'금'
+	,'4'
+	,'1'
+	,'1'
+	,'1'
+	,18
+	,20
+	,'0'	
+	,15
+	,'전필'
+	,'M'
+	,3
+	,''
+	,''
+	,'2022'
+	,'2'
+	,'소프트웨어과'
+	,'2022-09-01'
+	,'0'
+	);

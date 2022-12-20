@@ -25,6 +25,9 @@ public interface NoticeJpaRepository extends JpaRepository<Notice, Long> {
 	Page<Notice> findByNoticeType(PageRequest of, String NoticeType);
 
 	Page<Notice> findByNoticeTypeOrNoticeType(PageRequest of, String noticeType, String allcontent);
+
+	
+
 	
 	
 	

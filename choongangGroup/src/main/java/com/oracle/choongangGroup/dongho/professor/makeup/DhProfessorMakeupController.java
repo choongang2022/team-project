@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.oracle.choongangGroup.changhun.JPA.Member;
 import com.oracle.choongangGroup.dongho.auth.GetMember;
 import com.oracle.choongangGroup.hs.lecManagement.LectureVO;
 import com.oracle.choongangGroup.sh.domain.Lecture;
@@ -37,6 +38,8 @@ public class DhProfessorMakeupController {
 	// 휴보강 신청 페이지 요청
 	@GetMapping("/makeupPage")
 	public String makeupPage(Model model) {
+		Member member = getMember.getMember();
+		model.addAttribute("member", member);
 		// select에 표시할 강의 목록 조회
 		log.info("select 출력 강의 list 조회 시작");
 		String profName = getMember.getMember().getName();

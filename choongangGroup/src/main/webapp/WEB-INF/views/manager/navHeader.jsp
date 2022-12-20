@@ -16,6 +16,7 @@
             <li><a href="${pageContext.request.contextPath}/manager/studentManage" class="nav-link px-2 link-dark">학사 관리</a></li>
             <li><a href="${pageContext.request.contextPath}/manager/mypage" class="nav-link px-2 link-dark">마이페이지</a></li>
             <li><a href="${pageContext.request.contextPath}/manager/message/messageList" class="nav-link px-2 link-dark">쪽지함 관리</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">교재 관리</a></li>
+            <li><a href="${pageContext.request.contextPath}/manager/registerTimeForm" class="nav-link px-2 link-dark">기간 관리</a></li>
+            <li><a href="${pageContext.request.contextPath}/manager/bookList" class="nav-link px-2 link-dark">교재 관리</a></li>
 </body>
 </html>

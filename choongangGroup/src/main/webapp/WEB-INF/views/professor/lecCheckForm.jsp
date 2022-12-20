@@ -6,33 +6,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Content</title>
-	<!-- bottSTrap CSS only -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"/>
-	<!-- bootStrap Icons -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-	<!-- JavaScript Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-	<!-- jQuery -->
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<!-- font awesome -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<!-- CSS -->
-	<link rel="stylesheet" href="/css/stylesLec.css">
-	<link rel="stylesheet" href="/css/styles.css">
+<title>lecCheck</title>
+<!-- bottSTrap CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"/>
+<!-- bootStrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- font awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- CSS -->
+<link rel="stylesheet" href="/css/stylesLec.css">
+<link rel="stylesheet" href="/css/styles.css">
 
-	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript">
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
 	$(document).ready(function(){
 		$("#lecSelect").val($("#lecIdHidden").val());
 		$("#lecSelect").change(function(){
 			location.href='lecAttendanceCheck?id=' + $(this).val();
 		});
 	});
-	</script>
+</script>
+	
+
 </head>
 
-<body id="body-pd">
+<body id="body-pd"  style="background-color: rgb(214, 225, 237)" >
 	<jsp:include page="shortHeadrInfo.jsp"></jsp:include>
 	
 	<!-- side nav bar -->
@@ -90,7 +92,8 @@
 								&nbsp;&nbsp;&#183;&nbsp;&nbsp; ${lecture.building} ${lecture.room} &nbsp;&nbsp;&#183;&nbsp;&nbsp;강의학생 : <b>${memCnt}</b>명</div>
 							</div>
 							<input type="hidden" id="lecIdHidden" value="${lecture.id}">
-	
+							
+							<div class="scroll_wrap" style="height: 500px; overflow: scroll; overflow-x: hidden;">
 							<table class="table table-bordered table-sm font09" >
 								<thead class="table-secondary">
 									<tr style="text-align: center;">
@@ -126,6 +129,7 @@
 									</c:if>
 									</c:forEach>
 							</table>
+							</div>
 						</div>
 					
 					<!-- footer -->

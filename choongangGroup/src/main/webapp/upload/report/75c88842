@@ -1,0 +1,6 @@
+SELECT    l.lec_day1 , i.lec_times , l.lec_hours
+FROM      application_lec a , lecture l, member m
+WHERE     a.lec_id = l.lec_id
+and          a.userid = m.userid
+
+

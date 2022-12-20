@@ -22,43 +22,44 @@
 	<link rel="stylesheet" href="/css/stylesLec.css">
 	<link rel="stylesheet" href="/css/styles.css">
 <script type="text/javascript">
-
-	 $(document).ready(function(){
+	$(document).ready(function(){
 		var str = "";
+		
+		
+		// 강의 이름 select Box
 		$.ajax({
-			url : 'findProf',
+			url : '/professor/findProf',
 			dataType : 'json',
 			success  : function(data){
 				$.each(data,function(index,item){
-					str += "<option value='" + item + "'>" + item + "</option>";
+					str += "<option value='" + item.lecId + "'>" +'(' +item.typeCode + item.lecId+') '+ item.lecName + "</option>";
 				});
-			
- 			const urlParams = new URL(location.href).searchParams;
-			var pname = urlParams.get('pname');
-			$('#profOption').append(str);
-			console.log("pname --> " + pname);
-			if (pname == null){
-				$(".form-select").val("오태우").prop("selected",true);
+				
+				const urlParams = new URL(location.href).searchParams;
+				var lecid = urlParams.get('lecId');
+				$('#lecName').append(str);
+				
+				if (lecid != null){
+					$("#lecName").val(lecid).prop("selected", true);
+				}
 			}
-			if (pname != null){
-				$(".form-select").val(pname).prop("selected", true);
-			}
-			}
-		});
-		
-		$('.form-select').on('change',function(){
-			var optionName = $(".form-select").val();
-			location.href = "/professor/EvaManagementForm?pname=" + optionName;
 		});
 
-	}); 
-	
+		// 강의 이름이 변경되었을 때
+		$('#lecName').on('change',function(){
+			var optionName = $("#lecName").val();
+			
+			location.href = "/professor/EvaManagementForm?lecId=" + optionName;
+		});
+		
+		
+	});
 </script>
 <style type="text/css">
 	#headFont{
 		font-size : 18px;
 		font-weight : 600;
-		margin : 50px;
+		margin : 50px 0px 50px 0px;
 	}
 	.score{
     	font-size: 50px;
@@ -78,7 +79,7 @@
 	}
 	 .star {
     position: relative;
-    font-size: 2rem;
+    font-size: 1.9rem;
     color: #aaa9a9;
   }
   
@@ -99,10 +100,10 @@
   .bi-alexa{
   	padding-right : 20px;
   }
-</style>
+</style> 
 </head>
 
-<body id="body-pd">
+<body id="body-pd"  style="background-color: rgb(214, 225, 237)">
 	<jsp:include page="shortHeadrInfo.jsp"></jsp:include>
 	
 	<!-- side nav bar -->
@@ -123,115 +124,119 @@
 					<!----- card content 내용 ------>
 						<div class="col-12 rounded-bottom overflow-auto bg-white p-5" style="min-height: 550px;">
 						
-						<h2>강의평가</h2><hr>
-						
-
-                    	<div class = "row border-bottom border-4" style="margin-bottom: 50px;">
-                    		<div class = "col-8 m-2" style="line-height: 2.5;">
-                    			강의 평가
-                    		</div>
-                    		<div class = "col-1 m-2" style="line-height: 2.5;">
-                    			교수 이름  
-                    		</div>
-                    		<div class = "col-2 m-2">
-	                    		<select class="form-select" id = "profOption" aria-label="Default select example">
-	                    		</select>
-                    		</div>
+							<h2>강의평가</h2><hr>
+							<div class="mb-4">
+	                    		<div class = "col-1 m-2" style="line-height: 2.5;font-weight: 700;font-size: 17px; display: inline;">
+	                    			강의 이름  
+	                    		</div>
+	                    		<div class = "col-2 m-2 " style=" display: inline;">
+		                    		<select class="form-select" id = "lecName" aria-label="Default select" style=" display: inline;">
+		                    		</select>
+	                    		</div>
+	                    	</div>
+	                    	<div class = "row mb-4" >
+		                    	<div class="col-1" id = "headFont">
+		                    		만족도
+		                    	</div>
+	                    		<div class = "col-4 border-end border-2" style="text-align: center;">
+	                    			<c:if test="${total.totalAvg eq 0 || total.totalAvg eq null}"><span class="score text-danger">0</span></c:if>
+	                    			<c:if test="${total.totalAvg ne 0}"><span class="score text-danger">${total.totalAvg}</span></c:if><br>
+	                    			<span class = "koreafont-1">평균만족도</span>
+	                    		</div>
+	                   			<div class = "col-4 border-end border-2" style="text-align: center;">
+	                   				<c:if test="${total.evaCnt eq 0 || total.evaCnt eq null}">
+	                    				<span class="score text-danger">${total.totalCnt} / 0</span>
+	                    			</c:if>
+	                    			<c:if test="${total.evaCnt ne 0 && total.evaCnt ne null }">
+	                    				<span class="score text-danger">${total.totalCnt} / ${total.evaCnt}</span>
+	                    			</c:if>
+	                    			<span class = "koreafont text-danger">명</span><br>
+	                    			<span class = "koreafont-1">수강인원 / 평가인원</span>
+	                    		</div>
+	                    		<%-- <div class = "col-2 border-end border-2" style="text-align: center;">
+	                    			<span class="score">${total.evaCnt}</span><span class = "koreafont">명</span><br>
+	                    			<span class = "koreafont-1">평가인원</span>
+	                    		</div> --%>
+	                    		<div class = "col-3" style="text-align: center;">
+	                    			<span class="score text-danger">
+	                    				<fmt:formatNumber value="${total.evaCnt/total.totalCnt }"  type="percent"></fmt:formatNumber>
+	                    			</span><br>
+	                    			<span class = "koreafont-1">평가참여율</span>
+	                    		</div>
+	                    	</div>
+	                    	
+	                    	<div class = "row mb-5">
+		                    	<c:if test="${evaList.size()==0}">
+		                    		<!-- <div class="col-3"></div> -->
+		                    		<div class = "col-4  fw-bold">
+		                    			수업내용
+										<span class="star ms-1">
+										  ★★★★★
+										  <span style="width:0%">★★★★★</span>
+										</span>
+		                    			<span class="font08"> (0점)</span>
+		                    		</div>
+		                    		<div class = "col-4  fw-bold">
+		                    			수업방법 
+		                    			<span class="star ms-1">
+										  ★★★★★
+										  <span style="width:0%">★★★★★</span>
+										</span>
+		                    			<span class="font08"> (0점)</span>
+		                    		</div>
+		                    		<div class = "col-4  fw-bold">
+		                    			수업유형
+		                    			<span class="star ms-1">
+										  ★★★★★
+										  <span style="width:0%">★★★★★</span>
+										</span>
+		                    			<span class="font08"> (0점)</span>
+		                    		</div>
+		                    	</c:if>
+		                   
+		                    	<c:if test="${evaList.size()!=0}">
+		                    		<!-- <div class="col-1"></div> -->
+			                    	<c:forEach var="eva" begin="0" end="${evaList.size()-1}" items="${evaList }">
+			                    	
+			                    		<c:if test="${eva.bigCategory == 10}">
+				                    		<div class = "col-4  fw-bold">
+				                    			수업내용
+												<span class="star ms-1">
+												  ★★★★★
+												  <span style="width:${eva.avg*18.8}%">★★★★★</span>
+												</span><span class="font08"> (${eva.avg}점/5점)</span>
+				                    		</div>
+			                    		</c:if>
+			                    		<c:if test="${eva.bigCategory == 20}">
+				                    		<div class = "col-4  fw-bold">
+				                    			수업방법  
+				                    			<span class="star ms-1">
+												  ★★★★★
+												  <span style="width:${eva.avg*18.8}%">★★★★★</span>
+												</span><span class="font08"> (${eva.avg}점/5점)</span>
+				                    		</div>
+			                    		</c:if>
+			                    		<c:if test="${eva.bigCategory == 30}">
+				                    		<div class = "col-4  fw-bold">
+				                    			수업유형
+				                    			<span class="star ms-1">
+												  ★★★★★
+												 <span style="width:${eva.avg*18.8}%">★★★★★</span>
+												 </span><span class="font08"> (${eva.avg}점/5점)</span>
+				                    		</div>
+			                    		</c:if>
+			                    	</c:forEach>
+		                    	</c:if>
+	                    	</div>
+                    		<div class ="border-bottom border-3 mt-4 mb-3 pb-3" style ="font-weight: 700;">수강후기</div>
+								<c:if test="${reviewList.size() != 0}">
+	                    			<c:forEach var="review" items="${reviewList}">
+		                    		<div class = "review">
+	                    				<i class="bi bi-alexa"></i>${review.review}
+	    	                		</div>
+	                    			</c:forEach>
+								</c:if>
                     	</div>
-                    	<div class = "row" style="margin-bottom: 40px;">
-                    	<div class="col-1" id = "headFont">
-                    		만족도
-                    	</div>
-                    		<div class = "col-2 border-end border-2" style="text-align: center;">
-                    			<span class="score">${total.totalAvg}</span><br>
-                    			<span class = "koreafont-1">평균만족도</span>
-                    		</div>
-                   			<div class = "col-2 border-end border-2" style="text-align: center;">
-                    			<span class="score">${total.totalCnt}</span><span class = "koreafont">명</span><br>
-                    			<span class = "koreafont-1">수강인원</span>
-                    		</div>
-                    		<div class = "col-2 border-end border-2" style="text-align: center;">
-                    			<span class="score">${total.evaCnt}</span><span class = "koreafont">명</span><br>
-                    			<span class = "koreafont-1">평가인원</span>
-                    		</div>
-                    		<div class = "col-2" style="text-align: center;">
-                    			<span class="score">
-                    			<fmt:formatNumber value="${total.evaCnt/total.totalCnt }"  type="percent"></fmt:formatNumber>
-                    			</span><br>
-                    			<span class = "koreafont-1">평가참여율</span>
-                    		</div>
-                    	</div>
-                    	<div class = "row">
-                    	<c:if test="${evaList.size()==0}">
-                    		<div class="col-2"></div>
-	                    		<div class = "col-3">
-	                    			수업내용(5점)
-									<span class="star">
-									  ★★★★★
-									  <span style="width:0%">★★★★★</span>
-									</span>
-	                    			 (0점)
-	                    		</div>
-	                    		<div class = "col-3">
-	                    			수업방법(5점)  
-	                    			<span class="star">
-									  ★★★★★
-									  <span style="width:0%">★★★★★</span>
-									</span>
-	                    			 (0점)
-	                    		</div>
-	                    		<div class = "col-3">
-	                    			수업유형(5점)
-	                    			<span class="star">
-									  ★★★★★
-									  <span style="width:0%">★★★★★</span>
-									</span>
-	                    			 (0점)
-	                    		</div>
-                    		</c:if>
-	                   
-                    	<c:if test="${evaList.size()!=0}">
-                    		<div class="col-1"></div>
-                    	<c:forEach var="eva" begin="0" end="${evaList.size()-1}" items="${evaList }">
-                    	
-                    		<c:if test="${eva.bigCategory == 10}">
-	                    		<div class = "col-3">
-	                    			수업내용(5점)
-									<span class="star">
-									  ★★★★★
-									  <span style="width:${eva.avg*18.8}%">★★★★★</span>
-									</span>
-	                    			 (${eva.avg}점)
-	                    		</div>
-                    		</c:if>
-                    		<c:if test="${eva.bigCategory == 20}">
-	                    		<div class = "col-3">
-	                    			수업방법(5점)  
-	                    			<span class="star">
-									  ★★★★★
-									  <span style="width:${eva.avg*18.8}%">★★★★★</span>
-									</span>(${eva.avg}점)
-	                    		</div>
-                    		</c:if>
-                    		<c:if test="${eva.bigCategory == 30}">
-	                    		<div class = "col-3">
-	                    			수업유형(5점)
-	                    			<span class="star">
-									  ★★★★★
-									 <span style="width:${eva.avg*18.8}%">★★★★★</span>
-									 </span> (${eva.avg}점)
-	                    		</div>
-                    		</c:if>
-                    	</c:forEach>
-                    	</c:if>
-                    	</div>
-                    		<div class ="border-bottom border-3 m-3 pb-3" style ="padding-left : 25px">수강후기</div>
-
-                    			<c:forEach var="review" items="${reviewList}">
-	                    		<div class = "review">
-                    				<i class="bi bi-alexa"></i>${review.review}
-    	                		</div>
-                    			</c:forEach>
                     	
 					
 					<!-- footer -->
@@ -239,7 +244,6 @@
 						<jsp:include page="../footer.jsp"></jsp:include>
 					</footer> 
 					<!-- </footer>  -->
-				</div>
 				</div>
 			</main>
 		</div> 

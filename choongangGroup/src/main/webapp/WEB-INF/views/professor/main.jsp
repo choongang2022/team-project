@@ -42,7 +42,7 @@ a {
 </style>
 </head>
 
-<body id="body-pd">
+<body id="body-pd" style="background-color: rgb(214, 225, 237)">
 	<!-- header main Logo -->
 	<jsp:include page="mainLogo.jsp"></jsp:include>
 	<input type="hidden" id="mainCheck" value="${mainCheck}">
@@ -51,7 +51,7 @@ a {
 	<!-- /side nav bar -->
 	
 	<!-- main content -->
-	<div class="container-fluid w-100" style=" background-color: rgb(214, 225, 237)">
+	<div class="container-fluid w-100 h-100" style=" background-color: rgb(214, 225, 237)">
 		<div class="row">
 
 		<!-- content header -->
@@ -72,10 +72,10 @@ a {
 							<p class="mb-1 font08"  style="display: inline;">수강인원 : <b>${lec.memberCnt}</b>명</p>
 							<div class="font08" style="display: inline; float: right;">
 							<%-- 총 수업시간 : <b style="color: red">6</b>/${lec.maxCount}&nbsp; &#183; &nbsp; 휴강 : <b>${statusCnt1}</b> &nbsp; &#183; &nbsp; 보강 : <b>${statusCnt2}</b> --%>
-								<button type="button" class="btn btn-secondary btn-sm  font08 ms-5"  style="display: inline; "
+								<button type="button" class="btn btn-secondary btn-sm  font09 ms-5"  style="display: inline; "
 										onclick="location.href='lecAttendanceCheck?id=${lec.lecture.id}'">&nbsp; 전자출석부  &nbsp;</button>
-								<button type="button" class="btn btn-primary btn-sm font08"     style="display: inline;"
-										onclick="location.href='reportList?id=${lec.lecture.id}'">&nbsp; 과제조회  &nbsp;</button>
+								<button type="button" class="btn btn-primary btn-sm font09" style="display: inline;"
+										onclick="location.href='reportList?id=${lec.lecture.id}'">&nbsp;&nbsp; 과제조회  &nbsp;&nbsp;</button>
 							</div>
 							<hr class="my-3">   
 							<!-- <button type="button" class="btn btn-secondary btn-sm">강의평가조회</button> -->
@@ -83,7 +83,7 @@ a {
 						</c:forEach>
 	                  </div>
                   <div class="col-md-5 rounded overflow-auto bg-white p-5" style="min-height: 400px;"> 
-                     <h5 class="fw-bold" >공지사항</h5>
+                     <div><div class="fw-bold h5" style="display: inline;">공지사항</div><a href="/professor/notice/noticeList"><i class="bi bi-plus ms-5 " style="display: inline; float: right;"></i></a></div>
 						<hr class="mb-4">
                      <table class="Notice-table table table-hover mb-5 font09" id="noticeTable">
 								<!-- <thead>

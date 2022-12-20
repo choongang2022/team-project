@@ -28,12 +28,11 @@ public class AdminBookServiceImpl implements AdminBookService {
 	@Override
 	public void bookInsert(BookVo book) {
 		abd.bookInsert(book);
-		
 	}
 
 	@Override
-	public List<BookVo> bookList() {
-		List<BookVo> list = abd.bookList();
+	public List<BookVo> bookList(BookVo book) {
+		List<BookVo> list = abd.bookList(book);
 		return list;
 	}
 
@@ -68,6 +67,12 @@ public class AdminBookServiceImpl implements AdminBookService {
 	public List<BookVo> bookSearchList(BookVo book) {
 		List<BookVo> getSearch = abd.bookSearchList(book);
 		return getSearch;
+	}
+
+	@Override
+	public int processTotal() {
+		int totProcessCnt = abd.processTotal();
+		return totProcessCnt;
 	}
 	
 

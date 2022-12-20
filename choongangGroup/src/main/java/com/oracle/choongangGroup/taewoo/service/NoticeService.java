@@ -120,6 +120,19 @@ public class NoticeService {
 		return NoticeDto.toDto(notice);
 	}
 
+	public Notice update(NoticeDto noticeDto, String writerUserid) {
+		System.out.println("update start....");
+		Member writer = memberRepository.findByUserid(writerUserid);
+		Notice notice = new Notice();
+		notice.setNoticeNum(noticeDto.getNoticeNum());
+		notice.setWriter(writer);
+		notice.setNoticeTitle(noticeDto.getNoticeTitle());
+		notice.setNoticeContent(noticeDto.getNoticeContent());
+		notice.setNoticeType(noticeDto.getNoticeType());
+		return noticeJpaRepository.save(notice);
+		
+	}
+
 
 	
 

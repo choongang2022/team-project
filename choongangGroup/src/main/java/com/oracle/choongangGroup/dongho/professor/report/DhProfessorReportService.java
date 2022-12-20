@@ -1,27 +1,21 @@
 package com.oracle.choongangGroup.dongho.professor.report;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-
-import com.oracle.choongangGroup.sh.domain.ApplicationLec;
 import com.oracle.choongangGroup.sh.domain.Lecture;
-import com.oracle.choongangGroup.sh.domain.Report;
 
 public interface DhProfessorReportService {
 
 	List<Lecture> findByProf(String profName);
 
-	Page<ApplicationLec> findPageByLecture_IdAndGubun(Long id, Long gubun, Pageable pageable);
+	ArrayList<Integer> updateReportScore(List<ReportUpdateDto> reportUpdateDtoList);
 
-	int updateReportScore(Long id, String score, String grade);
+	String createZipAll(Long idToFind);
 
-	Report findByApplicationLec_Member_Userid(String userid);
+	String createZipSel(List<String> fileList);
 
-	void save(Report report);
-
-	List<ApplicationLec> findByLecture_IdAndGubun(Long id, Long gubun);
+	Map<String, Object> lecReportListPaging(Long id, int page);
 
 }

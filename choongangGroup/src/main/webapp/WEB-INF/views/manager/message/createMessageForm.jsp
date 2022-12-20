@@ -124,7 +124,7 @@
                         <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">받은 쪽지함</span>
                     </a>
-                    <a href="#" class="nav__link">
+                    <a href="/manager/message/senderMessageList" class="nav__link">
                         <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">보낸 쪽지함</span>
                     </a>

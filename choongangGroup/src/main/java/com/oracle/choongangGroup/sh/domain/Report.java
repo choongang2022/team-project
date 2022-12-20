@@ -2,6 +2,7 @@ package com.oracle.choongangGroup.sh.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
@@ -13,6 +14,7 @@ import lombok.Data;
 public class Report {
 	@Id
 	@Column(name = "rep_id")
+	@GeneratedValue
 	private Long id;
 	
 	@OneToOne

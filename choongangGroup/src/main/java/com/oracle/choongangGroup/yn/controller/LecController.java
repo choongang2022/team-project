@@ -27,8 +27,6 @@ import com.oracle.choongangGroup.hs.approval.ApprovalService;
 import com.oracle.choongangGroup.sh.domain.ApplicationLec;
 import com.oracle.choongangGroup.sh.domain.Grade;
 import com.oracle.choongangGroup.sh.domain.Lecture;
-import com.oracle.choongangGroup.taewoo.domain.Notice;
-import com.oracle.choongangGroup.taewoo.repository.NoticeJpaRepository;
 import com.oracle.choongangGroup.yn.repository.GradeRepository;
 import com.oracle.choongangGroup.yn.repository.LecRepository;
 import com.oracle.choongangGroup.yn.repository.LecRepositoryImpl;
@@ -175,7 +173,7 @@ public class LecController {
 		for(Lecture lecList : lectureList) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("lecture", lecList);
-			List<ApplicationLec> alList = ls.findByLecture_IdAndGubun(lecList.getId(), 1L);
+			List<ApplicationLec> alList = ls.findByLecture_IdAndGubun(lecList.getId(), 2L);
 			map.put("memberCnt", alList.size());
 			mapList.add(map);
 		}
@@ -197,7 +195,7 @@ public class LecController {
 	public String selectOneLec(@RequestParam(value = "id") Long id, Model model) {
 		String name = gm.getMember().getName();
 		Lecture lecture = lr.findById(id);
-		Long gubun = (long) 1;
+		Long gubun = (long) 2;
 		
 		List<ApplicationLec> alList = ls.findByLecture_IdAndGubun(id, gubun);
 		List<Lecture> lectureList = lr.findByProfAndStatusOrderByIdAsc(name, "0"); // 개설된 강의조회
@@ -265,7 +263,7 @@ public class LecController {
 	@GetMapping(value = "professor/lecScoreForm")
 	@ResponseBody
 	public Map<String, Object> lecScoreForm(@RequestParam(value = "id") Long id, Model model) {
-		Long gubun = (long) 1;
+		Long gubun = (long) 2;
 		List<ApplicationLec> alList = ls.findByLecture_IdAndGubun(id, gubun);
 		Collections.sort(alList, new Comparator<ApplicationLec>() {
 

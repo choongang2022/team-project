@@ -55,6 +55,7 @@ function lecUpdate(id) {
 			document.getElementById("lecSemester").value=lec.semester;
 			document.getElementById("lecMajor").value=lec.major;
 			document.getElementById("lecId").value=lec.id;
+			document.getElementById("lecStatus").value=lec.status;
 			
 		}
 	});
@@ -63,9 +64,14 @@ function lecUpdate(id) {
 //// 강의 삭제///////////
 function lecDelete() {
 	var id = document.getElementById("lecId").value;
+	var status = document.getElementById("lecStatus").value;
 	/* var status = document.getElementById("lecStatus").value; */
 	console.log("강의 클릭 ===> " + id);
-
+	console.log("강의 status ===> " + status);
+ 	if(status == '0') {
+		alert("이미 승인된 강의입니다.\n삭제 할수 없습니다.");
+		return false;
+	} 
 	if(confirm("삭제하시겠습니까?") == true){
 		/* if(status  == '0') {
 			alert("이미 승인된 강의입니다.\n삭제 할수 없습니다.")
@@ -215,6 +221,7 @@ $(document).ready(function(){
 	});
 
 	$("#lecSaveBtn").click(function(){
+		alert("강의명 : " + $("#lecName").val() + "\n저장되었습니다.");
 		console.log("클릭");
 		console.log("클릭" +  $("#lecName").val());
 		
@@ -377,7 +384,7 @@ function setDateBox() {
 	
 </head>
 
-<body id="body-pd">
+<body id="body-pd"  style="background-color: rgb(214, 225, 237)">
 	<jsp:include page="shortHeadrInfo.jsp"></jsp:include>
 	
 	<!-- side nav bar -->
@@ -400,7 +407,7 @@ function setDateBox() {
 						<div class="col-12 rounded-bottom overflow-auto bg-white p-5" style="min-height: 550px;">
 						<h2>강의개설</h2><hr>
 							<div class="mt-4  " >
-								<div class="fw-bold item-start " style="display: inline; float: left;">개설강좌 목록</div>
+								<div class="fw-bold item-start " style="display: inline; float: left;">개설강의 목록</div>
 								<div class="font08" style="display: inline; float: right;">
 									<span>총건수 <b class="text-danger">${lecCnt}</b>건 </span>
 								</div>
@@ -447,7 +454,7 @@ function setDateBox() {
 			
 							<br>
 							<div class="mt-4 mb-2 form-group mx-0 font09" style="display: inline;">
-									<!-- <p class="fw-bold ">개설강좌 목록</p> -->
+									<!-- <p class="fw-bold ">개설강의 목록</p> -->
 							
 								<div class="mx-0 px-0 text-end">
 									<button type="button" style="width: 8%; display: inline;" class="btn btn-primary btn-sm me-1"
@@ -504,7 +511,7 @@ function setDateBox() {
 								</table>
 							</div>
 							<br>
-							<div class="mt-2 fw-bold ">개설강좌 상세정보</div>
+							<div class="mt-2 fw-bold ">개설강의 상세정보</div>
 							<br>
 							
 							<form id="lecSave" action="/professor/lecSave" method="post">

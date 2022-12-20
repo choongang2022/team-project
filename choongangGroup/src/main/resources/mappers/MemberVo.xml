@@ -43,6 +43,7 @@
 			WHERE  l.lec_id = a.lec_id
 			and
 			a.userid = #{userid}
+		    ORDER BY lec_year desc , lec_semester desc
 
 </select>
 

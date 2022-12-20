@@ -7,11 +7,29 @@
 
 	<insert id="BookInsert" parameterType="BookVo">
 		insert into book(bookId, bookName, publisher, cateCode, bookPrice, bookStock, bookInfo, bookImg, bookThumbImg)
-		values (book_seq.nextval, #{bookName}, #{publisher}, #{cateCode}, #{bookPrice}, #{bookStock}, #{bookInfo}, #{bookImg}, #{bookThumbImg})
+		values (book_id_seq.nextval, #{bookName}, #{publisher}, #{cateCode}, #{bookPrice}, #{bookStock}, #{bookInfo}, #{bookImg}, #{bookThumbImg})
 	</insert>
 	
-	<select id="BookList" resultType="BookVo">
-		Select b.bookId, b.bookName, b.publisher, b.bookPrice, b.bookStock, b.bookInfo , b.bookImg , b.bookThumbImg ,b.cateCode,b.regDate, c.cateParent,c.cateName
+	<select id="BookList" resultType="BookVo" parameterType="BookVo">
+		SELECT *
+		FROM
+		(
+			SELECT rownum rn, a.*
+			FROM
+			(Select b.bookId, b.bookName, b.publisher, b.bookPrice, b.bookStock, b.bookInfo , b.bookImg , b.bookThumbImg ,b.cateCode,b.regDate, c.cateParent,c.cateName
+		From 
+        book b
+        
+			inner join book_cate c
+				on b.cateCode = c.cateCode
+		Order By bookId asc
+			) a
+		)
+		where rn between #{start} and #{end}
+	</select>
+	
+	<select id="RYProcessTotal" resultType="int">
+		Select count(*)
 		From book b
 			inner join book_cate c
 				on b.cateCode = c.cateCode
@@ -19,7 +37,7 @@
 	</select>
 	
 	<select id="BookDetail" resultType="BookVo" parameterType="int">
-		Select b.bookId, b.bookName, b.publisher, b.bookPrice, b.bookStock, b.bookInfo , b.bookImg , b.bookThumbImg ,b.cateCode, c.cateParent,c.cateName
+		Select b.bookId, b.bookName, b.publisher, b.bookPrice, b.bookStock, b.bookInfo , b.bookImg , b.bookThumbImg ,b.cateCode,b.regDate, c.cateParent,c.cateName
 		From book b
 			inner join book_cate c
 				on b.cateCode = c.cateCode
@@ -27,7 +45,7 @@
 	</select>
 	
 	<select id="BookJoin" resultType="BookVo" parameterType="int">
-		select b.bookId, b.bookName, b.publisher, b.bookPrice, b.bookStock, b.bookInfo , b.bookImg , b.bookThumbImg ,b.cateCode, c.cateParent,c.cateName
+		select b.bookId, b.bookName, b.publisher, b.bookPrice, b.bookStock, b.bookInfo , b.bookImg , b.bookThumbImg ,b.cateCode,b.regDate, c.cateParent,c.cateName
 		From book b
 			inner join book_cate c
 				on b.cateCode = c.cateCode
@@ -53,8 +71,24 @@
 	Where bookId = #{bookId}
 	</delete>
 	
-	<select id="ShopList" resultType="BookVo">
+	<select id="ShopList" resultType="BookVo" parameterType="BookVo">
+		SELECT *
+		FROM
+		(
+			SELECT rownum rn, a.*
+			FROM
+			(
 		Select b.bookId, b.bookName, b.publisher, b.bookPrice, b.bookStock, b.bookInfo , b.bookImg , b.bookThumbImg ,b.cateCode,b.regDate, c.cateParent,c.cateName
+		From book b
+			inner join book_cate c
+				on b.cateCode = c.cateCode
+		Order By bookId asc) a
+		)
+		where rn between #{start} and #{end}
+	</select>
+	
+	<select id="RYShopProcessTotal" resultType="int">
+		Select count(*)
 		From book b
 			inner join book_cate c
 				on b.cateCode = c.cateCode
@@ -62,13 +96,15 @@
 	</select>
 	
 	<select id="ShopDetailList" resultType="BookVo" parameterType="int">
-		Select *
-		From Book
+		Select b.bookId, b.bookName, b.publisher, b.bookPrice, b.bookStock, b.bookInfo , b.bookImg , b.bookThumbImg ,b.cateCode,b.regDate, c.cateParent,c.cateName
+		From book b
+			inner join book_cate c
+				on b.cateCode = c.cateCode
 		Where bookId = #{bookId}
 	</select>
 	
 	<select id="GetBookSearch" resultType="BookVo" parameterType="BookVo">
-	select b.bookId, b.bookName, b.publisher, b.bookPrice, b.bookStock, b.bookInfo , b.bookImg , b.bookThumbImg ,b.cateCode, c.cateParent,c.cateName
+	select b.bookId, b.bookName, b.publisher, b.bookPrice, b.bookStock, b.bookInfo , b.bookImg , b.bookThumbImg ,b.regDate, b.cateCode, c.cateParent,c.cateName
 		From book b
 			inner join book_cate c
 				on b.cateCode = c.cateCode
@@ -81,7 +117,7 @@
 	</select>
 	
 	<select id="SearchBookList" resultType="BookVo" parameterType="BookVo">
-	select b.bookId, b.bookName, b.publisher, b.bookPrice, b.bookStock, b.bookInfo , b.bookImg , b.bookThumbImg ,b.cateCode, c.cateParent,c.cateName
+	select b.bookId, b.bookName, b.publisher, b.bookPrice, b.bookStock, b.bookInfo , b.bookImg , b.bookThumbImg ,b.cateCode,b.regDate, c.cateParent,c.cateName
 		From book b
 			inner join book_cate c
 				on b.cateCode = c.cateCode

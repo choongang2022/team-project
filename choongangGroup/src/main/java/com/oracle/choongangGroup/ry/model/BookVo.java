@@ -50,6 +50,7 @@ public class BookVo {
 	
 	private String type;
 	private String keyword;
-	
+	private int start;
+	private int end;
 	
 }

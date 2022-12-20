@@ -3,6 +3,5 @@
 <ul>
 	<li><a href="/manager/bookInsert">교재 등록</a></li>
 	<li><a href="/manager/bookList">교재 목록</a></li>
-	<li><a href="/manager/shopList">교재 구입 목록</a></li>
 	<li><a href="/manager/adminOrderList">주문목록</a></li>
 </ul>

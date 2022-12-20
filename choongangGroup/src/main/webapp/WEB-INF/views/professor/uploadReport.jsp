@@ -24,15 +24,17 @@
 			var formData = new FormData();
 			var inputFile = $("input[name='file']");
 			var files = inputFile[0].files;
+			var lecId = $("#lecId").val();
 			console.log(files);
 			
 			for(var i = 0; i < files.length; i++) {
 				formData.append("uploadFile", files[i]);
 			}
+			formData.append("lecId",lecId);
 			
 			$.ajax({
 				type: "POST",
-				url: "/professor/uploadReport",
+				url: "uploadReport",
 				processData: false,
 				contentType: false,
 				data: formData,
@@ -161,8 +163,11 @@
                     <!-- card content -->  
                     <div class="col-12 rounded-bottom overflow-auto bg-light p-3" style="min-height: 550px;"> 
                         <h2 class="fw-bold">과제파일업로드</h2>
-                        <input type="file" name="file">
-                        <button id="uploadFile">Upload</button>
+                        <form action="uploadReport" method="post" enctype="multipart/form-data" >
+	                        <input type="file" name="file">
+	                        <input type="hidden" name="lecId" value="${lecId }" id="lecId">
+	                        <input type="submit" value="업로드">
+                        </form>
                     </div>
                     <!-- footer -->
                    	<footer class="col-12" style="height: 60px; font-size: 12px;">

@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Repository;
 
 import com.oracle.choongangGroup.hj.model.EvaluationVo;
+import com.oracle.choongangGroup.hj.model.MemberVo;
 
 import lombok.RequiredArgsConstructor;
 
@@ -164,6 +165,25 @@ public class EvaluationDaolmpl implements EvaluationDao {
 		System.out.println(updateCount);
 		
 		return updateCount;
+	}
+
+	@Override
+	public MemberVo infoList(String userid) {
+		MemberVo memberinfo = new MemberVo();
+		
+		try {
+			memberinfo = session.selectOne("hjEvMemberinfoSelOne", userid);
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println("EvaluationDaolmpl infoList Exception-> "+e.getMessage());
+		}
+		
+		
+		
+		
+		return memberinfo;
 	}
 
 

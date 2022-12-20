@@ -21,128 +21,92 @@
 </head>
 
 <body class="" id="body-pd">
-    <!-- header -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bd-navbar bg-light sticky-top position-fixed fixed-top w-100" style="position : absolute">
-        <a class="navbar-brand">
-            <button class="btn ms-2" type="button">
-                <img class="img-fluid" src="/images/logo2.png" alt="logo2" style="height: 40px;">
-            </button>
-        </a>
-    </nav> -->
+  
     <nav class="navbar navbar-expand-lg navbar-dark bd-navbar bg-light sticky-top position-fixed fixed-top w-100" style="position : absolute">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
           <a href="/" class="navbar-brand">
             <img class="img-fluid" src="/images/logo2.png" alt="logo2" style="height: 40px;"><use xlink:href="#bootstrap"></use></svg>
           </a>
     
-          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
-          </ul>
+  
         </header>
     </nav>
     <!-- /header -->
-    <!-- side nav bar -->
+   	<!----------------------- side nav bar ---------------------------------->
     <div class="l-navbar" id="navbar">
         <nav class="navv">
             <div>
                 <div class="nav__brand">
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                    <a href="#" class="nav__logo">Bedimcode</a>
+                 
                 </div>
                 <div class="nav__list">
-                    <a href="#" class="nav__link active">
-                        <ion-icon name="home-outline" class="nav__icon"></ion-icon>
-                        <span class="nav_name">Dashboard</span>
-                    </a>
-                    <a href="#" class="nav__link">
-                        <ion-icon name="chatbubbles-outline" class="nav__icon"></ion-icon>
-                        <span class="nav_name">Messenger</span>
-                    </a>
-
-                    <div href="#" class="nav__link collapses">
-                        <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
-                        <span class="nav_name">Projects</span>
+                	<div href="#" class="nav__link collapses">
+                        <i class="bi bi-person-rolodex"></i>
+                        <span class="nav_name">학사관리</span>
 
                         <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 
-                        <ul class="collapse__menu">
-                            <a href="#" class="collapse__sublink">Data</a>
-                            <a href="#" class="collapse__sublink">Group</a>
-                            <a href="#" class="collapse__sublink">Members</a>
+                        <ul class="collapse__menu" style="width: 200px;">
+                            <li><a href="/student/listEmp" class="collapse__sublink">학적정보 조회</a></li>
+                            <li><a href="/student/lectureListForm" class="collapse__sublink">강의목록 조회</a></li>
+                            
+                            <li><a href="/student/timetable" class="collapse__sublink">시간표 조회</a></li>
+                           
+
                         </ul>
                     </div>
+                    
 
-                    <a href="#" class="nav__link">
-                        <ion-icon name="pie-chart-outline" class="nav__icon"></ion-icon>
-                        <span class="nav_name">Analytics</span>
-                    </a>
+					<a href="/student/gradeList" class="nav__link">
+	                    <i class="bi-mortarboard"></i>
+	                    <span class="nav_name">&nbsp;성적 관리</span>
+	                </a>
+		
 
-                    <div href="#" class="nav__link collapses">
-                        <ion-icon name="people-outline" class="nav__icon"></ion-icon>
-                        <span class="nav_name">Team</span>
+					<a href="/student/evaluationList" class="nav__link">
+	                    <i class="bi-pencil"></i>
+	                    <span class="nav_name">&nbsp;강의 평가</span>
+	                </a>
+
+
+					<a href="/student/applyIndex" class="nav__link">
+	                    <i class="bi bi-box-arrow-up-right"></i>
+	                    <span class="nav_name">&nbsp;수강 신청</span>
+	                </a>
+                    <div href="/student/shopList" class="nav__link collapses">
+                        <i class="bi bi-book"></i>
+                        <span class="nav_name">&nbsp;교재 구매</span>
 
                         <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 
-                        <ul class="collapse__menu">
-                            <a href="#" class="collapse__sublink">Data</a>
-                            <a href="#" class="collapse__sublink">Group</a>
-                            <a href="#" class="collapse__sublink">Members</a>
+                        <ul class="collapse__menu" style="width: 200px;">
+                            <li><a href="/student/shopList" class="collapse__sublink">교재 목록</a></li>
+                            <li><a href="/student/cartList" class="collapse__sublink">장바구니</a></li>
+                            <li><a href="/student/orderList" class="collapse__sublink">주문 목록</a></li>
                         </ul>
                     </div>
-
-                    <a href="#" class="nav__link">
-                        <ion-icon name="settings-outline" class="nav__icon"></ion-icon>
-                        <span class="nav_name">Settings</span>
-                    </a>
                 </div>
-                <a href="#" class="nav__link">
-                    <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
-                    <span class="nav_name">Log out</span>
+                <a href="/logout" class="nav__link">
+                    <i class="bi-power"></i>
+                    <span class="nav_name">&nbsp; Log out</span>
                 </a>
             </div>
         </nav>
     </div>
     <!-- /side nav bar -->
-    <!-- main content -->
+<jsp:include page="header.jsp"></jsp:include>
+	<!-- main content -->
+	<div class="row">
+		
+	
     <div class="container-fluid w-100" style=" background-color: rgb(214, 225, 237)">
-        <div class="row">
-            
-            
-            <!-- content header -->
-            <div class="col-12 pt-4" style="height: 150px; background-color: rgb(95, 142, 241)">
-                <div class="d-flex flex-row mb-3">
-                    <div>
-                        <span class="text-white h4">안녕하세요. <span class="fw-bold">김중앙</span>님!</span>
-                    </div>
-                    <div class="border border-1 border-white border-bottom rounded-pill text-white px-2 pt-1 ms-2 h6">교수</div>
-                    <div>
-                        <i class="text-white bi-gear-fill mx-2"></i>
-                    </div>
-                </div>
-                <div class="row">
-                    <div>
-                        <span class="text-white h6">이공대학 컴퓨터공학과 | 정교수</span>
-                    </div>
-                </div>
-                <div class="d-flex flex-low">
-                    <div>
-                        <i class="bi bi-envelope-fill text-white"></i>
-                    </div>
-                    <div>
-                        <span class="text-white ms-3">test123@naver.com</span>
-                    </div>
-                </div>
-                
-            </div>
+		
             <main class="col-9 h-100 w-100">
                 <div class="row m-5">
                     <!-- card header -->
                     <div class="col-12 rounded-top text-white overflow-auto pt-2 fw-bold" style="background-color: rgb(39, 40, 70); height: 40px;"> 
-                        <i class="bi bi-bookmark-fill me-2"></i>교수서비스 <i class="bi bi-chevron-right"></i>학사관리 <i class="bi bi-chevron-right"></i>강의 시간표 조회
+                        <i class="bi bi-bookmark-fill me-2"></i>학생서비스 <i class="bi bi-chevron-right"></i>수강신청 <i class="bi bi-chevron-right"></i>장바구니
                     </div>
                     <!-------------------------본문---------------------------->  
                     <div class="col-12 rounded-bottom overflow-auto bg-light p-3" style="min-height: 550px;"> 
@@ -153,17 +117,19 @@
                           <span class="fs-6 fw-bold text-danger">(장바구니 교과목은 반드시  실 수강신청 기간에 신청)</span>
                         </div> 
                         
+                        
+                        
                         <!-- 공지사항 -->
                         <div>
 	                      	<div class=" float-start col-12">
 								<div class="fw-bold fs-5 border rounded-top p-2" style="background-color:#EAEAEA; height: 45px;">&nbsp; <i class="bi bi-bell-fill" style="color: rgb(39, 40, 70);"></i> &nbsp;공지사항</div>
-								<div class=" fs-6 fw-bold border p-4" style="height: 230px;">									
+								<div class=" fs-6 fw-bold border p-4" style="height: 260px;">									
 									<p> ※ 수강신청 장바구니 유의사항 안내</p>
 									<p class="px-3"> 
-									1. &nbsp;장바구니 시행 기간 : &nbsp;<!-- 장바구니기간 --><br>				 
-									2. &nbsp;장바구니 신청 대상 : &nbsp;2022학년도 2학기 (년도,월기준으로 설정)<br>
-									3. &nbsp;장바구니 최대 학점 : &nbsp;21학점<br>
-									4. &nbsp;장바구니 주요 사항<br>
+									<i class="bi bi-1-square-fill"></i> &nbsp;장바구니 시행 기간 : &nbsp;<!-- 장바구니기간 --><br>				 
+									<i class="bi bi-2-square-fill"></i> &nbsp;장바구니 신청 대상 : &nbsp;2022학년도 2학기 (년도,월기준으로 설정)<br>
+									<i class="bi bi-3-square-fill"></i> &nbsp;장바구니 최대 학점 : &nbsp;21학점<br>
+									<i class="bi bi-4-square-fill"></i> &nbsp;장바구니 주요 사항<br>
 										<span class="px-3">가. &nbsp;수업시간 중복 불가</span><br>
 										<span class="px-3">나. &nbsp;장바구니 인원 제한 없음(실제 수강신청 시 수강 인원 제한 있음)</span></p>									
 	                      		</div> 
@@ -171,20 +137,20 @@
                       </div>
                         
                         <!-- 버튼 -->                                 
-                        <div class="container text-center mt-4 float-start">
-						  <div class="row ">
-						    <div class="col-3 border rounded fs-6 fw-bold pt-2" style="background-color: #EAEAEA">
-						      	수강신청 장바구니 담기
-						    </div>
-					  		 <div class="col-1">
-						      	<button class="btn btn-dark" style="background-color:rgb(39, 40, 70);" onclick="location.href='likeForm?userid=${userid}&lecName='">Click</button>
+                        <div class="container text-center mt-5 float-start">
+						<!--   <div class="row "> -->
+						    <!-- <div class="col-3 border rounded fs-6 fw-bold pt-2" style="background-color: #EAEAEA">
+						      	
+						    </div> -->
+					  		 <div >
+						      	<button class="btn btn-dark fw-bold col-12" style="background-color:rgb(39, 40, 70);" onclick="location.href='likeForm?userid=${userid}&lecName='">수강신청 장바구니 담기</button>
 						    </div>
 
 						  </div>
 						</div>
 						
 						
-						<div class="container text-center mt-3 float-start mb-4">
+						<%-- <div class="container text-center mt-3 float-start mb-4">
 						  <div class="row">
 						   <div class="col-3 border rounded fs-6 fw-bold pt-2" style="background-color: #EAEAEA">
 						      	장바구니 시간표 조회
@@ -195,7 +161,7 @@
 						    
 						  </div>
 						</div>
-                      	 
+                      	  --%>
                       	<!-- //////////////////////////////////// -->
                       		 
                       	 

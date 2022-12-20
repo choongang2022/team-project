@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.oracle.choongangGroup.changhun.JPA.Member;
 import com.oracle.choongangGroup.taewoo.domain.Message;
@@ -22,5 +23,17 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
 	Message findByMessageId(Long messageId);
 
 	List<Message> findByReceiverOrderByMessageIdDesc(Member member, Pageable pageable);
+
+	@Transactional
+	@Modifying
+	@Query("UPDATE Message m SET m.deletedByReceiver = true WHERE m.messageId = :messageId")
+	int updateDeleteReceiver(@Param("messageId") Long messageId);
+
+	List<Message> findBySenderOrderByMessageIdDesc(Member member, Pageable pageable);
+
+	@Transactional
+	@Modifying
+	@Query("UPDATE Message m SET m.deletedBySender = true WHERE m.messageId = :messageId")
+	int updateDeleteSender(@Param("messageId") Long messageId);
 
 }

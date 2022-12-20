@@ -12,20 +12,21 @@
 
 function getGradeList(vuserId)
 {
-	alert("성공")
+	//alert("성공")
 	/* 내가 셀렉트에서 선택한 인덱스 번째의 값을 가져옴  */
 	var value = (selectOp.options[selectOp.selectedIndex].value);
+    
 
 	$.ajax({
 
 				
-		url : "/gradeDetailList",			
+		url : "gradeDetailList",			
 		data:{userid : vuserId , ys : value},  /* 아이디와  ys(학기,년도)파라메타 두개 넘겨줌  */				
 		dataType : 'json',			
 		success:function(data){
 			
-			alert("value = "+value);					
-			alert("성공");
+			//alert("value = "+value);					
+			//alert("성공");
 					
 					
 					//학기 년도 별 신청한 과목 성적 조회  테이블생성 
@@ -69,7 +70,8 @@ function getGradeList(vuserId)
 		               $("#gradeList").html(str);          //값이 쌓일때마다 계속 넣어줌
 		               
 		               var str2 = '<tr>';
-		               var countUnit = 0;   //토탈 신청학점
+		               var unitTotal=0;     //토탈신청학점
+		               var countUnit = 0;   //토탈 취득학점
 		               var countTotal = 0;  // 토탈성적
 		               var percentile = 0;   //백분위
 		               var avg = 0;      //평균
@@ -78,18 +80,24 @@ function getGradeList(vuserId)
 		               
 		               
 		               $.each(data, (index, obj)=>{
+		            	  unitTotal += obj.lec_unit_score;
+		            	   
+		            	  if(obj.sco_total>=2) {
 		                  countUnit += obj.lec_unit_score;
+		            	  }
 		                  countTotal += obj.sco_total;
 		                  count ++;
 		               });
 		               
+		               
 		               avg = countTotal/count;
+		           
 		               percentile =countTotal*10+54;
 		               
-		               str2 +='<td>' + countUnit +'</td>';
+		               str2 +='<td>' + unitTotal +'</td>';
 		               str2 +='<td>' + countUnit +'</td>';
 		               str2 +='<td>' + countTotal +'</td>';
-		               str2 +='<td>' + avg + '</td>';
+		               str2 +='<td>' + avg.toFixed(1) + '</td>';
 		               str2 +='<td>' + percentile + '</td>';
 		               str2 +='</tr>' ;
 		               $("#scoretotal").html(str2);
@@ -187,101 +195,95 @@ function getGradeList(vuserId)
 	</nav>
 	<!-- /header -->
 	<!-- side nav bar -->
-	<div class="l-navbar" id="navbar">
-		<nav class="navv">
-			<div>
-				<div class="nav__brand">
-					<ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-					<a href="#" class="nav__logo">Bedimcode</a>
-				</div>
-				<div class="nav__list">
-					<a href="#" class="nav__link active"> <ion-icon
-							name="home-outline" class="nav__icon"></ion-icon> <span
-						class="nav_name">Dashboard</span>
-					</a> <a href="#" class="nav__link"> <ion-icon
-							name="chatbubbles-outline" class="nav__icon"></ion-icon> <span
-						class="nav_name">Messenger</span>
-					</a>
+    <div class="l-navbar" id="navbar">
+        <nav class="navv">
+            <div>
+                <div class="nav__brand">
+                    <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
+                   <!--  <a href="#" class="nav__logo">카테고리</a> -->
+                </div>
+                <div class="nav__list">
+                   <div href="#" class="nav__link collapses">
+                        <i class="bi bi-person-rolodex"></i>
+                        <span class="nav_name">학사관리</span>
 
-					<div href="#" class="nav__link collapses">
-						<ion-icon name="folder-outline" class="nav__icon"></ion-icon>
-						<span class="nav_name">Projects</span>
+                        <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 
-						<ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+                        <ul class="collapse__menu" style="width: 200px;">
+                            <li><a href="/student/listEmp" class="collapse__sublink">학적정보 조회</a></li>
+                            <li><a href="/student/lectureListForm" class="collapse__sublink">강의목록 조회</a></li>
+                            
+                            <li><a href="/student/timetable" class="collapse__sublink">시간표 조회</a></li>
+                           
 
-						<ul class="collapse__menu">
-							<a href="#" class="collapse__sublink">Data</a>
-							<a href="#" class="collapse__sublink">Group</a>
-							<a href="#" class="collapse__sublink">Members</a>
-						</ul>
-					</div>
+                        </ul>
+                    </div>
+                    
 
-					<a href="#" class="nav__link"> <ion-icon
-							name="pie-chart-outline" class="nav__icon"></ion-icon> <span
-						class="nav_name">Analytics</span>
-					</a>
+               <a href="/student/gradeList" class="nav__link">
+                       <i class="bi-mortarboard"></i>
+                       <span class="nav_name">&nbsp;성적 관리</span>
+                   </a>
+      
 
-					<div href="#" class="nav__link collapses">
-						<ion-icon name="people-outline" class="nav__icon"></ion-icon>
-						<span class="nav_name">Team</span>
-
-						<ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
-
-						<ul class="collapse__menu">
-							<a href="#" class="collapse__sublink">Data</a>
-							<a href="#" class="collapse__sublink">Group</a>
-							<a href="#" class="collapse__sublink">Members</a>
-						</ul>
-					</div>
-
-					<a href="#" class="nav__link"> <ion-icon
-							name="settings-outline" class="nav__icon"></ion-icon> <span
-						class="nav_name">Settings</span>
-					</a>
-				</div>
-				<a href="#" class="nav__link"> <ion-icon name="log-out-outline"
-						class="nav__icon"></ion-icon> <span class="nav_name">Log
-						out</span>
-				</a>
-			</div>
-		</nav>
-	</div>
-	<!-- /side nav bar -->
-	<!-- main content -->
-	<div class="container-fluid w-100"
-		style="background-color: rgb(214, 225, 237)">
-		<div class="row">
+               <a href="/student/evaluationList" class="nav__link">
+                       <i class="bi-pencil"></i>
+                       <span class="nav_name">&nbsp;강의 평가</span>
+                   </a>
 
 
-			<!-- content header -->
-			<div class="col-12 pt-4"
-				style="height: 150px; background-color: rgb(95, 142, 241)">
-				<div class="d-flex flex-row mb-3">
-					<div>
-						<span class="text-white h4">안녕하세요. <span class="fw-bold">김중앙</span>님!
-						</span>
-					</div>
-					<div
-						class="border border-1 border-white border-bottom rounded-pill text-white px-2 pt-1 ms-2 h6">교수</div>
-					<div>
-						<i class="text-white bi-gear-fill mx-2"></i>
-					</div>
-				</div>
-				<div class="row">
-					<div>
-						<span class="text-white h6">이공대학 컴퓨터공학과 | 정교수</span>
-					</div>
-				</div>
-				<div class="d-flex flex-low">
-					<div>
-						<i class="bi bi-envelope-fill text-white"></i>
-					</div>
-					<div>
-						<span class="text-white ms-3">test123@naver.com</span>
-					</div>
-				</div>
+               <a href="/student/applyIndex" class="nav__link">
+                       <i class="bi bi-box-arrow-up-right"></i>
+                       <span class="nav_name">&nbsp;수강 신청</span>
+                   </a>
+                    <div href="/student/shopList" class="nav__link collapses">
+                        <i class="bi bi-book"></i>
+                        <span class="nav_name">&nbsp;교재 구매</span>
 
-			</div>
+                        <ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+
+                        <ul class="collapse__menu" style="width: 200px;">
+                            <li><a href="/student/shopList" class="collapse__sublink">교재 목록</a></li>
+                            <li><a href="/student/cartList" class="collapse__sublink">장바구니</a></li>
+                            <li><a href="/student/orderList" class="collapse__sublink">주문 목록</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="/logout" class="nav__link">
+                    <i class="bi-power"></i>
+                    <span class="nav_name">&nbsp; Log out</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+    <!-- /side nav bar -->
+<!-- main content -->
+   <div class="container-fluid w-100" style=" background-color: rgb(214, 225, 237)">
+      <div class="row">
+      
+         <!-- content header -->
+         <div class="col-12 px-5 py-4" style=" background-color: rgb(95, 142, 241)">
+            <div class="d-flex flex-row mb-2 mt-2">
+               <div>
+                  <span class="text-white h4">안녕하세요. <span class="fw-bold">${member.name}</span>님!</span>
+               </div>
+               <div class="border border-1 border-white rounded-pill text-white ms-2"  style="height: 25px;">
+                  <div class="font09 align-items-center">&nbsp; 학생  &nbsp;</div>
+               </div>
+               <div><i class="text-white bi-gear-fill mx-2">  </i></div>
+            </div>
+            <div class="row">
+
+            <div>
+               <span class="text-white font09">${member.major}과&nbsp; &nbsp; ${member.grade}&nbsp;학년 </span>
+            </div>
+            </div>
+            <div class="d-flex flex-low mb-2">
+               <div><i class="bi bi-envelope-fill text-white"></i></div>
+               <div><span class="text-white ms-2 font09">${member.email}</span></div>
+            </div>
+
+         </div>
 			<main class="col-9 h-100 w-100">
 				<div class="row m-5">
 					<!-- card header -->
@@ -302,7 +304,9 @@ function getGradeList(vuserId)
 <div >
 <p class="fw-semibold">
 
-	<th>${member.name }</th>
+
+
+<th>${member.name }</th>
 	<th>(${member.userid })</th>
 	<th>${member.grade }학년</th>
 	<th>${member.stud_status}중</th>
@@ -310,26 +314,19 @@ function getGradeList(vuserId)
 
 
 
-
-
 </p> 
-
-	
 
 </div>
 
-
 						<div>
 						
-						</div>
-						<br>
-						<div>
+		<button type="button" class="btn btn-outline-secondary" disabled>총 성적 내역</button>				
 						
-<p class="fw-semibold">총 성적 내역</p> 
+		
 							<table class="table table-striped table-hover"
-								style="width: 700px">
+								style="width: 700px; text-align: center;">
 								<thead>
-									<tr>
+									<tr >
 										<th>신청학점</th>
 										<th>취득학점</th>
 										<th>평점총계</th>
@@ -381,7 +378,7 @@ function getGradeList(vuserId)
 						
 						<div>
 							<table class="table table-striped table-hover"
-								style="width: 700px">
+								style="width: 700px; text-align: center;">
 								<thead>
 									<tr>
 							
@@ -409,7 +406,7 @@ function getGradeList(vuserId)
 
 						<div>
 							<table class="table table-striped table-hover"
-								style="width: 700px">
+								style="width: 700px; text-align: center;">
 								<thead>
 									<tr>
 										<th class="text-center">구분</th>
@@ -456,7 +453,10 @@ function getGradeList(vuserId)
 
 					</div>
 					<!-- footer -->
-					<footer class="col-12" style="height: 60px;"> footer </footer>
+					<footer class="col-12" style="height: 60px;">
+					<jsp:include page="../footer.jsp"></jsp:include>
+					
+					 </footer>
 				</div>
 			</main>
 		</div>

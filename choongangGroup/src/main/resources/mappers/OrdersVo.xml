@@ -16,6 +16,7 @@
 	     orderId, userId, orderName, Phone, amount, orderDate, state, bookLoca,billState
 	 from Orders 
 	     where userId = #{userId}
+	      Order by billState desc , state asc 
 	</select>
 	
 	<!-- 특정 주문 목록 -->
@@ -31,6 +32,7 @@
 	             on d.bookId = g.bookId
 	     where o.userId = #{userId}
 	         and o.orderId = #{orderId}
+	    
 	</select>
 	<select id="AdminOrderList" resultType="OrdersVo">
 	 select
@@ -51,6 +53,7 @@
 	         inner join book g
 	             on d.bookId = g.bookId
 	     where o.orderId = #{orderId}
+	     Order by o.billState asc, o.state desc
 	</select>
 	
 	<!-- 배송 상태 -->

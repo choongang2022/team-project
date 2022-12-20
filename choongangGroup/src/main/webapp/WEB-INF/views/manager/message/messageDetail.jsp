@@ -100,11 +100,11 @@
 		console.log("dnoticeNum -> " + dmessageId);
 		
 		$.ajax({
-			url 	: "/manager/deleteNotice",
+			url 	: "/manager/messageDeleteOne",
 			data	: {messageId : dmessageId},
 			success : function(data){
 				alert("삭제 되었습니다.");
-				location.href = "/manager/notice/noticeList";
+				location.href = "/manager/message/messageList";
 			}
 		});
 	}
@@ -153,7 +153,7 @@
                         <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">받은 쪽지함</span>
                     </a>
-                    <a href="#" class="nav__link">
+                    <a href="/manager/message/senderMessageList" class="nav__link">
                         <ion-icon name="folder-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">보낸 쪽지함</span>
                     </a>

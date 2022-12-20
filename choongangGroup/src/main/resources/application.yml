@@ -21,6 +21,7 @@ spring:
    # Jpa Setting  
   jpa: 
     hibernate: 
+    
       ddl-auto: update  # none   update    create
     properties:
       hibernate:

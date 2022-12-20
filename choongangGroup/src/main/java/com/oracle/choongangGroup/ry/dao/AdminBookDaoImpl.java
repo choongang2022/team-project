@@ -40,8 +40,8 @@ public class AdminBookDaoImpl implements AdminBookDao {
 	}
 
 	@Override
-	public List<BookVo> bookList() {
-		List<BookVo> list = session.selectList("BookList");
+	public List<BookVo> bookList(BookVo book) {
+		List<BookVo> list = session.selectList("BookList", book);
 		return list;
 	}
 
@@ -82,5 +82,15 @@ public class AdminBookDaoImpl implements AdminBookDao {
 			System.out.println("bookSearchList e.getMessage()"+e.getMessage());
 		}
 		return getBookList;
+	}
+
+	@Override
+	public int processTotal() {
+		int totProcessCnt = 0;
+		try {
+			totProcessCnt = session.selectOne("RYProcessTotal");
+		} catch (Exception e) {
+		}
+		return totProcessCnt;
 	}
 }

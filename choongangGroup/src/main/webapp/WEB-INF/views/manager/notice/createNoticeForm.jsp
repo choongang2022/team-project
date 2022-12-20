@@ -70,8 +70,9 @@
 				</div>
 				<div class="nav__list">
 					<div href="/manager/notice/noticeList" class="nav__link collapses">
-						<ion-icon name="folder-outline" class="nav__icon"></ion-icon>
-						<span class="nav_name"><a style="text-decoration: none; color: white;"  href="/notice/noticeList">공지사항 관리</a></span>
+						<a style="text-decoration: none; color: white;"  href="/notice/noticeList"><ion-icon name="folder-outline" class="nav__icon"></ion-icon>
+						</a>
+						<span class="nav_name">공지사항 관리</span>
 
 						<ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 

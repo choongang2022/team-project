@@ -23,6 +23,7 @@ public interface DhProfessorReportRepository extends JpaRepository<Report, Appli
 	@Modifying(clearAutomatically = true)
 	@Query("UPDATE Report r SET r.score = :score, r.grade = :grade WHERE r.id = :id")
 	int updateReportScore(@Param(value = "id") Long id, @Param(value = "score") String score, @Param(value = "grade") String grade);
+	
 	Report findByApplicationLec_Member_Userid(String userid);
 
 }

@@ -124,6 +124,7 @@ public class MemberController {
 		System.out.println(" MemberController gradeListForm start . . . ");
        //아이디 받아오기
 		String userid = gm.getMember().getUserid();
+		
 		// 이름 가져오기위해서 해줌
 		MemberVo memberinfo = ms.infoList(userid);
 
@@ -180,7 +181,7 @@ public class MemberController {
 	
 
 	
-	//아작스의 성공시(data)에 gradeList 들어감 
+	 
 	return gradeList;
 
 
