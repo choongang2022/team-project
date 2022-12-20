@@ -50,7 +50,7 @@ public class DeptController {
 		
 		System.out.println(data);
 		
-		return "redirect:/deptForm";
+		return "redirect:/manager/deptForm";
 	}
 	
 	@RequestMapping(value = "searchDept")

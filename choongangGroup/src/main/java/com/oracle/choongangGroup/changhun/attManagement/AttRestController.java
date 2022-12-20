@@ -33,7 +33,7 @@ public class AttRestController {
 	private final MemberRepository memRepository;
 	private final GetMember getMember;
 	
-	@RequestMapping(value = "attInsert")
+	@RequestMapping(value = "/attInsert")
 	public String attInsert() {
 		String msg = null;
 		
@@ -50,7 +50,7 @@ public class AttRestController {
 		return msg;
 	}
 	
-	@RequestMapping(value = "attOff")
+	@RequestMapping(value = "/attOff")
 	public String attOff() {
 		String msg = null;
 		

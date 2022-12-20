@@ -99,6 +99,7 @@ public class AttManagementService {
 
 	// 퇴근 등록
 	public void attOff() throws ParseException {
+
 		Member member1 = getMember.getMember();
 		String userid = member1.getUserid();
 		
