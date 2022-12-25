@@ -9,8 +9,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.UpdateProvider;
 
-import com.oracle.choongangGroup.dongho.professor.lecturePlan.dto.LecPlanWeekDto;
-import com.oracle.choongangGroup.dongho.professor.sqlprovider.LecPlanSql;
+import com.oracle.choongangGroup.dongho.professor.lecturePlan.LecPlanSql;
+import com.oracle.choongangGroup.dongho.professor.lecturePlan.LecPlanWeekDto;
 
 @Mapper
 public interface LecPlanWeekMapper {

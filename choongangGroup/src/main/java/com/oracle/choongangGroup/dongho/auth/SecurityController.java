@@ -52,7 +52,6 @@ public class SecurityController {
 	private final JavaMailSender mailSender;
 	private final JwtTokenProvider jwtp;
 	private final GetMember gm;
-
 	
 	@Value("${spring.mail.username}")
 	private String MAIL_USERNAME;
@@ -81,7 +80,10 @@ public class SecurityController {
 		return "/professor/main";
 	}
 
-
+	@GetMapping("/admin/main")
+	public String adminMain() {
+		return "/admin/contentSample";
+	}
 	
 	// InterCeptor RSA setting 후 loginForm으로 연결
 	@GetMapping("/")
@@ -90,9 +92,9 @@ public class SecurityController {
 		log.info("====== loginForm 요청 start ======");
 		String targetUrl = "";
 		// Request Header cookie 에서 JWT 토큰 추출
-        String accessToken  = resolveAccessToken((HttpServletRequest) request);
+        String accessToken = resolveAccessToken((HttpServletRequest) request);
         String refreshToken = resolveRefreshToken((HttpServletRequest) request);
-        String keepToken    = resolveKeepToken((HttpServletRequest) request);
+        String keepToken = resolveKeepToken((HttpServletRequest) request);
         Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
         Collection<? extends GrantedAuthority> roles = authentication.getAuthorities();
         if (accessToken != null && refreshToken != null || keepToken != null) {
@@ -111,7 +113,7 @@ public class SecurityController {
     		}
     		else if (roles != null && roles.stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
     			//response.sendRedirect("/admin/main");
-    			targetUrl = "/admin/adminMain";
+    			targetUrl = "/admin/main";
     		}
 		} else {
 			log.info("토큰이 없음, 로그인 페이지로 이동");
@@ -128,7 +130,7 @@ public class SecurityController {
     				  HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
     	// session에서 개인키 받기(loginForm 요청시 session에 저장해둔 개인키)
     	log.info("====login Start====");
-    	HttpSession session   = request.getSession();
+    	HttpSession session = request.getSession();
         PrivateKey privateKey = (PrivateKey)session.getAttribute("__rsaPrivateKey__");
         log.info("login securedUsername : {}", securedUsername);
         String username = null;
@@ -147,7 +149,7 @@ public class SecurityController {
         // 복호화된 아이디와 비밀번호로 토큰 생성(memberService의 login은 generateToken method를 통해 TokenInfo(토큰dto)를 리턴한다. )
         // 토큰dto에는 타입,refreshToken,accessToken이 들어있음
         TokenInfo tokenInfo = this.securityService.login(username, password, keepLogin);
-        String accessToken  = URLEncoder.encode(tokenInfo.getAccessToken(), "utf-8");
+        String accessToken = URLEncoder.encode(tokenInfo.getAccessToken(), "utf-8");
         String refreshToken = URLEncoder.encode(tokenInfo.getRefreshToken(), "utf-8");
         
         // DB에 Refresh Token 저장( 추후 Access Token의 유효기간이 끝났을 때 Refresh Token 검증을 위함)
@@ -244,8 +246,8 @@ public class SecurityController {
 	@PostMapping("/admin/pwCheck")
 	public void pwCheck(@RequestParam("password") String password ,HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String result = "0";
-		
-		String userid = gm.getMember().getUserid();
+		HttpSession session = request.getSession();
+		String userid = (String) session.getAttribute("userid");
 		Member member = securityService.findByUserid(userid);
 		String dbPassword = member.getPassword();
 		
@@ -283,7 +285,7 @@ public class SecurityController {
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}
-		String userid = gm.getMember().getUserid();
+		String userid = (String) session.getAttribute("userid");
 		Member member = securityService.findByUserid(userid);
 		String encodedPassword = passwordEncoder.encode(password);
 		member.setPassword(encodedPassword);
@@ -307,10 +309,10 @@ public class SecurityController {
 	@PostMapping("/anonymous/findId")
 	public String findId(Member member, HttpServletResponse response, HttpServletRequest request) throws IOException {
 		
-		String searchId     = member.getName();
-		String searchEmail  = member.getEmail();
+		String searchId    = member.getName();
+		String searchEmail = member.getEmail();
 		Member memberResult = securityService.findByNameAndEmail(searchId , searchEmail);
-		String result       = memberResult.getUserid();
+		String result = memberResult.getUserid();
 //		response.setContentType("text/html");
 //		PrintWriter out = response.getWriter();
 //		out.append(result);

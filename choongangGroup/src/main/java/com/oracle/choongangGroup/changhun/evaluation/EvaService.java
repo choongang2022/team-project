@@ -19,9 +19,9 @@ public class EvaService {
 		return evaList;
 	}
 
-	public List<EvaVo> profList(String pname) {
+	public List<String> profList() {
 		
-		List<EvaVo> profList = ed.profList(pname);
+		List<String> profList = ed.profList();
 		
 		return profList;
 	}

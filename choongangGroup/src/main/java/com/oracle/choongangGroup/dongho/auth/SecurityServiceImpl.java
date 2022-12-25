@@ -98,4 +98,7 @@ public class SecurityServiceImpl implements SecurityService {
 		return securityRepository.findByUseridAndEmail(userid, email);
 	}
 
+
+
+
 }

@@ -35,7 +35,7 @@ public class NoticeController {
 	private final NoticeService noticeService;
 	private final NoticeJpaRepository noticeJpaRepository;
 	private final GetMember getMember;
-		
+	
 	//공지사항 List
 	@GetMapping(value = "/notice/noticeList")
 	@PreAuthorize("isAuthenticated()")

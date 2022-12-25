@@ -10,7 +10,7 @@ import com.oracle.choongangGroup.ry.model.OrdersVo;
 public interface ShopService {
 
 
-	List<BookVo> bookList(BookVo book);
+	List<BookVo> bookList();
 
 	BookVo bookDetailList(int bookId);
 
@@ -43,8 +43,6 @@ public interface ShopService {
 	void billUpdateState(OrdersVo order);
 
 	List<OrdersVo> SearchOrderList(OrdersVo order);
-
-	int processTotal();
 
 
 

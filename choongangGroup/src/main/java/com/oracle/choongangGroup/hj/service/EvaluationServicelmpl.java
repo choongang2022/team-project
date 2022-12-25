@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.oracle.choongangGroup.hj.dao.EvaluationDao;
 import com.oracle.choongangGroup.hj.model.EvaluationVo;
-import com.oracle.choongangGroup.hj.model.MemberVo;
 
 import lombok.RequiredArgsConstructor;
 
@@ -142,7 +141,9 @@ public class EvaluationServicelmpl implements EvaluationService {
 
 	@Override
 	public int updateEvaluation(EvaluationVo evaluation) {
-		int updateEvaluation =0;	
+		int updateEvaluation =0;
+	
+		
 //		
 //		 for( int i =0 ; i <evaluation.leng ; i++) {
 //			 System.out.println("scoreList 하나만 꺼냄 "+evaluation.get(i));
@@ -150,15 +151,10 @@ public class EvaluationServicelmpl implements EvaluationService {
 				updateEvaluation = ed.updateEvaluation(evaluation);
 		
 		
-		return updateEvaluation;
-	}
-
-	@Override
-	public MemberVo infoList(String userid) {
-		MemberVo memberinfo = null;
-		memberinfo = ed.infoList(userid);
 		
-		return memberinfo;
+		
+		
+		return updateEvaluation;
 	}
 
 

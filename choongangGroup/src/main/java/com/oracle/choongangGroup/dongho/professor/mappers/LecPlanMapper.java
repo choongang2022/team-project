@@ -10,8 +10,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 
-import com.oracle.choongangGroup.dongho.professor.lecturePlan.dto.LecPlanDto;
-import com.oracle.choongangGroup.dongho.professor.sqlprovider.LecPlanSql;
+import com.oracle.choongangGroup.dongho.professor.lecturePlan.LecPlanDto;
+import com.oracle.choongangGroup.dongho.professor.lecturePlan.LecPlanSql;
 
 @Mapper
 public interface LecPlanMapper {
@@ -28,10 +28,5 @@ public interface LecPlanMapper {
 	@UpdateProvider(type = LecPlanSql.class, method = "updatePlan")
 	int updatePlan(LecPlanDto lecPlanDto);
 
-	int deletePlanAndLec(@Param("map") Map<String, Object> map);
-	
-	@Select("  SELECT lec_id "
-			+ "FROM   lec_plan "
-			+ "WHERE  lec_id = #{lec_id}")
-	Long isExistPlanLecId(@Param("lec_id") Long lec_id);
+	int deletePlanAndLec(@Param("lec_id") Long lec_id);
 }

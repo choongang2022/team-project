@@ -34,7 +34,6 @@ import com.oracle.choongangGroup.changhun.JPA.PhoneLike;
 import com.oracle.choongangGroup.changhun.address.AddressRepository;
 import com.oracle.choongangGroup.changhun.address.AddressService;
 import com.oracle.choongangGroup.changhun.address.MemberRepository;
-import com.oracle.choongangGroup.changhun.evaluation.EvaDao;
 import com.oracle.choongangGroup.changhun.evaluation.EvaService;
 import com.oracle.choongangGroup.changhun.evaluation.EvaVo;
 import com.oracle.choongangGroup.dongho.auth.GetMember;
@@ -316,49 +315,30 @@ public class ProfessorController {
 		/************************/
 		/******** 강의평가 ********/
 		/***********************/
-		@RequestMapping(value = "professor/EvaManagementForm")
+		@RequestMapping("professor/EvaManagementForm")
 		public String EvaManagementForm(Model model,
-										@RequestParam(value = "lecId", required = false) String lecid) {
-			List<Lecture> lecIdList = null ;
-			Member member = getMember.getMember();
+										@RequestParam(value = "pname") String pname) {
+			pname = gm.getMember().getName();
 			
-			String name = member.getName();
+			log.info("EvaManagementForm pname --> {}",pname);
 			
-			lecIdList = lr.findByProf(name);
+			model.addAttribute("member", getMember.getMember());
+			model.addAttribute("evaList", es.evaList(pname));
+			model.addAttribute("reviewList", es.reviewList(pname));
+			model.addAttribute("total", es.total(pname));
 			
-			if(lecid == null) {
-				lecid = lecIdList.get(0).getId().toString();
-			}
-		
-			
-			List<EvaVo> evaList = es.evaList(lecid);
-			List<EvaVo> reviewList = es.reviewList(lecid);
-			EvaVo total = es.total(lecid);
-			
-			
-			model.addAttribute("member", member);
-			model.addAttribute("evaList", evaList);
-			model.addAttribute("reviewList", reviewList);
-			model.addAttribute("total", total);
-			
-			return "professor/EvaManagementForm1";
+			return "professor/EvaManagementForm";
 		}
 		
 		@ResponseBody
 		@RequestMapping("professor/findProf")
-		public List<EvaVo> findProf(){
+		public List<String> findProf(){
 			
-			Member member = getMember.getMember();
-			
-			List<EvaVo> profList = es.profList(member.getName());
-			
-			log.info("findProf size ==> {}",profList.size() );
+			List<String> profList = es.profList();
 			
 			return profList;
 			
 		}
-			
-		
 		
 	// 캘린더이동 ---> 작업중 : 일단 연결만
 //	@GetMapping(value = "professor/calenderForm") public String lecList(Model model) { //

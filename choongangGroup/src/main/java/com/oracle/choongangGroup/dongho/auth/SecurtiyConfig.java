@@ -101,8 +101,6 @@ public class SecurtiyConfig {
 			.sessionRegistry(sessionRegistry());
 			
 		http.authenticationProvider(new CustomAuthenticationProvider(principalDetailsService , passwordEncoder()));
-		
-		http.headers().frameOptions().sameOrigin();
 			;
 		return http.build();
 			
@@ -116,8 +114,7 @@ public class SecurtiyConfig {
                             "/js/**",
                             "/css/**",
                             "/favicon.ico",
-                            "/ryImgUpload/**",
-                            "../default/js/pdf/pdfjs/web/"
+                            "/ryImgUpload/**"
                     );
         };
     }

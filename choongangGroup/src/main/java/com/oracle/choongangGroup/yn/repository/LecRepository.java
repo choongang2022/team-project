@@ -15,7 +15,6 @@ public interface LecRepository  extends JpaRepository<Lecture, String>{
 	@Transactional
 	void deleteById(Long id);
 	List<Lecture> findByProfAndStatusOrderByIdAsc(String name, String string);
-	List<Lecture> findByProf(String name);
 
 //	List<Lecture> searchLec(Lecture lecture);
 }

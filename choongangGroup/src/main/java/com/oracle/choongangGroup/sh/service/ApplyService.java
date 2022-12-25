@@ -17,7 +17,7 @@ public interface ApplyService {
 	
 	int apply(Long lecId, String userid, Long gubun);	//신청
 	int register(ApplyTime applyTime);
-	ApplyTime findTime(int year, int month, String select);
+	ApplyTime findTime(String year, String semester, String select);
 	Page<Lecture> lectureList(String year, String semester, Pageable pageable); 
 	Page<ApplicationLec> likeListPage(String userid, String year, String semester, Pageable pageable);
 	Page<Lecture> findByName(String year, String semester, String lecName, Pageable pageable2);

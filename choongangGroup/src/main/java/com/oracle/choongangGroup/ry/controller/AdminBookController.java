@@ -23,9 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.oracle.choongangGroup.changhun.JPA.Member;
 import com.oracle.choongangGroup.dongho.auth.GetMember;
-import com.oracle.choongangGroup.hs.approval.Paging;
 import com.oracle.choongangGroup.ry.UpLoad.UpLoadFileUtils;
 import com.oracle.choongangGroup.ry.model.BookCateVo;
 import com.oracle.choongangGroup.ry.model.BookVo;
@@ -47,11 +45,10 @@ private final GetMember gm;
 		
 	}
 	
-	@GetMapping(value = "/manager/bookInsert")
-	public void bookInsertGet(Member member,Model model){
+	@GetMapping(value = "manager/bookInsert")
+	public void bookInsertGet(Model model){
 		System.out.println("bookInsertGet Start..." );
 		List<BookCateVo> category = abs.category();
-		member = gm.getMember();
 		System.out.println("bookInsertGet Start..." + category);
 		JSONArray jsonArray = new JSONArray();
 		for (BookCateVo bookCateVo : category) {
@@ -64,13 +61,12 @@ private final GetMember gm;
 		}
 		System.out.println(jsonArray);
 		model.addAttribute("category", jsonArray);
-		model.addAttribute("member", member);
 	}
 	
-	@PostMapping(value = "/manager/bookInsert")
-	public String bookInsertPost(Member member,BookVo book, MultipartFile file, HttpServletRequest request,Model model) throws Exception{
+	@PostMapping(value = "manager/bookInsert")
+	public String bookInsertPost(BookVo book, MultipartFile file, HttpServletRequest request) throws Exception{
 //		String userid = gm.getMember().getUserid();
-		member = gm.getMember();
+		
 		String imgUploadPath = request.getSession().getServletContext().getRealPath("/ryImgUpload/");
 		String ymdPath = UpLoadFileUtils.calcPath(imgUploadPath);
 		String fileName = null;
@@ -89,31 +85,21 @@ private final GetMember gm;
 		book.setBookThumbImg(fileName);
 		}
 
-		model.addAttribute("member", member);
+		
 		abs.bookInsert(book);
-		return "redirect:/manager/bookList";
+		return "redirect:/student/adminMain";
 	}
 	
-	@GetMapping(value = "/manager/bookList")
-	public void BookListGet(String currentPage,Member member, Model model) {
-		BookVo book= new BookVo();
-		int processTotal = abs.processTotal();
-		
-		Paging page = new Paging(processTotal, currentPage);
-		book.setStart(page.getStart());
-		book.setEnd(page.getEnd());
-		model.addAttribute("page", page);
-		List<BookVo> list = abs.bookList(book);
-		member = gm.getMember();
+	@GetMapping(value = "manager/bookList")
+	public void BookListGet(Model model) {
+		List<BookVo> list = abs.bookList();
 		model.addAttribute("list", list);
-		model.addAttribute("member", member);
 	}
 	
 	@RequestMapping(value = "/manager/getSearch")
-	public String bookgetSearch(Member member,BookVo book, String cateParent, String keyword, Model model) {
+	public String bookgetSearch(BookVo book, String cateParent, String keyword, Model model) {
 		log.info("bookgetSearch start...");
 		String userid = gm.getMember().getUserid();
-		member = gm.getMember();
 		log.info(userid);
 		log.info(cateParent);
 		log.info(keyword);
@@ -124,23 +110,20 @@ private final GetMember gm;
 		model.addAttribute("cateParent", cateParent);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("list", bookList);
-		model.addAttribute("member", member);
-		return "/manager/bookList";
+		
+		return "/student/bookList";
 	}
 	
 	
-	@GetMapping(value = "/manager/detailBookList")
-	public void detailBookList(Member member,int bookId, Model model, BookCateVo category) {
-		member = gm.getMember();
+	@GetMapping(value = "manager/detailBookList")
+	public void detailBookList(int bookId, Model model, BookCateVo category) {
 		BookVo books = abs.bookDetailList(bookId);
 		model.addAttribute("books", books);
 		model.addAttribute("category", category);
-		model.addAttribute("member", member);
 	}
 	
 	@GetMapping(value = "manager/updateBook")
-	public void updateBookGet(Member member,int bookId, Model model) {
-		member = gm.getMember();
+	public void updateBookGet(int bookId, Model model) {
 		BookVo books = abs.updateBook(bookId);
 		model.addAttribute("books", books);
 		
@@ -157,7 +140,6 @@ private final GetMember gm;
 		}
 		System.out.println(jsonArray);
 		model.addAttribute("category", jsonArray);
-		model.addAttribute("member", member);
 	}
 	
 	@PostMapping(value = "manager/updateBook")

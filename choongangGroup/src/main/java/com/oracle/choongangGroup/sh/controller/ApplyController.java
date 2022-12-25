@@ -6,6 +6,7 @@ package com.oracle.choongangGroup.sh.controller;
 import java.io.File;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -62,24 +63,51 @@ public class ApplyController {
 	
 	//기간안내  & 수강신청,장바구니 선택 페이지 
 	@GetMapping(value = "applyIndex")
-	public String applyIndex( Model model) {
+	public String applyIndex(Model model) {
 		
 		String userid = gm.getMember().getUserid();
+		String year = getYear();
+		String semester = getSemester();
 		
-		LocalDate now = LocalDate.now();
-		int year = now.getYear();
-		int month = now.getMonthValue();
+		
+		String now = LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE);
+		
 		
 		//장바구니 기간 불러오기
 		String select = "like";
-		ApplyTime likeTime = as.findTime(year, month, select);
+		ApplyTime likeTime = as.findTime(year, semester, select);
 		//수강신청 기간 불러오기
 		select = "apply";
-		ApplyTime applyTime = as.findTime(year, month, select);
+		ApplyTime applyTime = as.findTime(year, semester, select);
 		
+		int nowInt = Integer.parseInt(now);
+		int likeStartInt = Integer.parseInt(likeTime.getStart());
+		int likeEndInt = Integer.parseInt(likeTime.getEnd());
+		int applyStartInt = Integer.parseInt(applyTime.getStart());
+		int applyEndInt = Integer.parseInt(applyTime.getEnd());
+		
+		String likeResult="";
+		String applyResult="";
+		if(nowInt>=likeStartInt && nowInt<=likeEndInt) {
+			likeResult = "ok";
+		}else {
+			likeResult = "likeWrong";
+		}
+		
+		if(nowInt>=applyStartInt && nowInt<=applyEndInt) {
+			applyResult = "ok";
+		}else {
+			applyResult = "applyWrong";
+		}
+		
+		System.out.println("-----------------likeResult--------------"+likeResult);
+		System.out.println("--------------------likeStartInt"+likeStartInt);
 		model.addAttribute("likeTime", likeTime);
 		model.addAttribute("applyTime", applyTime);
 		model.addAttribute("userid", userid);
+		model.addAttribute("likeResult", likeResult);
+		model.addAttribute("applyResult", applyResult);
+		
 		return "student/applyIndex"; 
 	}
 	
@@ -162,7 +190,11 @@ public class ApplyController {
 	//수강신청 목록 선택 --> 장바구니/전체강의
 	@GetMapping(value = "applySelect")
 	public String applySelect(String userid, Model model) {
+		String year = getYear();
+		String semester = getSemester();
 		model.addAttribute("userid", userid);
+		model.addAttribute("year", year);
+		model.addAttribute("semester", semester);
 		return "student/applySelect";
 	}
 	
@@ -270,18 +302,20 @@ public class ApplyController {
 	//장바구니, 수강신청 기간 등록 폼
 	@GetMapping(value = "registerTimeForm")
 	public String registerTimeForm(Model model){
-		LocalDate now = LocalDate.now();
-		int year = now.getYear();
+		String year = getYear();
+		String semester = getSemester();
 		model.addAttribute("year", year);
+		model.addAttribute("semester", semester);
 		return "student/registerTimeForm";
 	}
 
 	//기간 등록
 	@GetMapping(value = "registerTime")
 	public String registerTime(ApplyTime applyTime) { //@ModelAttribute 생략
-		ApplyTime time = new ApplyTime();
+		
 		int result = as.register(applyTime);
-		return "redirect:/registerTimeForm";
+	
+		return "student/registerTime";
 	}
 	
 	//현재 년도 구하기
@@ -320,9 +354,7 @@ public class ApplyController {
 	public String lectureListForm(Model model) {
 	
 		String userid = gm.getMember().getUserid();
-		String year = getYear();
-		
-		
+		String year = getYear();	
 		String semester = getSemester();
 		List<ApplicationLec> applyList = as.applyList(userid, year, semester);
 		List<String> yearList = yearList(userid);		
@@ -332,7 +364,6 @@ public class ApplyController {
 		model.addAttribute("semester", semester);
 		model.addAttribute("list", applyList);
 		model.addAttribute("yearList", yearList);
-		System.out.println("------------------------yearList------------"+yearList.get(1));
 		return "student/lectureListForm";
 		}
 		
@@ -380,7 +411,7 @@ public class ApplyController {
 		 */		
 		
 		//상대 경로 지정
-		String path =  request.getSession().getServletContext().getRealPath("/upload"); 
+		String path =  request.getSession().getServletContext().getRealPath("/upload/report"); 
 		System.out.println("--------------------과제 upload path---------------------------"+path);		
 		File savePath = new File(path); //realPath 경로
 		if(!savePath.exists()) { //realPath 경로에 파일 업로드 하기 위한 폴더가 없으면 생성

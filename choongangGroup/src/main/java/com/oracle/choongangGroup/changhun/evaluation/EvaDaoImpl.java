@@ -26,9 +26,9 @@ public class EvaDaoImpl implements EvaDao {
 	}
 
 	@Override
-	public List<EvaVo> profList(String pname) {
+	public List<String> profList() {
 		
-		List<EvaVo> profList = session.selectList("profFind",pname);
+		List<String> profList = session.selectList("profFind");
 		
 		System.out.println(profList.get(0));
 		
@@ -49,13 +49,6 @@ public class EvaDaoImpl implements EvaDao {
 		List<EvaVo> reviewList = session.selectList("review",pname);
 		
 		return reviewList;
-	}
-
-	public List<String> profNameList() {
-			
-		List<String> profNameList = session.selectList("proflist");
-			
-		return profNameList;
 	}
 	
 	

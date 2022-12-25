@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.oracle.choongangGroup.changhun.JPA.Member;
 import com.oracle.choongangGroup.dongho.auth.GetMember;
 import com.oracle.choongangGroup.hj.model.MemberVo;
-import com.oracle.choongangGroup.hs.approval.Paging;
 import com.oracle.choongangGroup.ry.model.BookCartVo;
 import com.oracle.choongangGroup.ry.model.BookCateVo;
 import com.oracle.choongangGroup.ry.model.BookVo;
@@ -40,20 +38,12 @@ public class ShopController {
 	private final GetMember gm;
 	
 	@GetMapping(value = "student/shopList")
-	public void shopList(String currentPage,Member member,Model model) throws Exception {
-		BookVo book= new BookVo();
-		int processTotal = ss.processTotal();
-		
-		Paging page = new Paging(processTotal, currentPage);
-		book.setStart(page.getStart());
-		book.setEnd(page.getEnd());
-		model.addAttribute("page", page);
+	public void shopList(Model model) throws Exception {
+		List<BookVo> bookList = null;
 		String userId = gm.getMember().getUserid();
-		List<BookVo> bookList = ss.bookList(book);
-		System.out.println("shopList userId=> "+ userId);
+		System.out.println("shopDetailList userId=> "+ userId);
+		bookList = ss.bookList();
 		model.addAttribute("bookList", bookList);
-		model.addAttribute("userId", userId);
-		model.addAttribute("member", member);
 	}
 	
 	@RequestMapping(value = "/student/shopDetailList", method = RequestMethod.GET)
@@ -69,10 +59,9 @@ public class ShopController {
 	// 
 	@GetMapping(value = "/student/getSearchList")
 	public String getSearchList(BookVo book,String type , String keyword, Model model){
+		List<BookVo> bookList = ss.getSearchList(book);
 //		book.setType(type);
 //		book.setKeyword(keyword);
-		
-		List<BookVo> bookList = ss.getSearchList(book);
 		model.addAttribute("type", type);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("bookList", bookList);
@@ -199,22 +188,18 @@ public class ShopController {
 		}
 	// 관리자 주문 목록 확인
 	@RequestMapping(value = "/manager/adminOrderList", method =RequestMethod.GET )
-	public void getadminOrderList(Model model) {
+	public void getadminOrderList( Model model) {
 		String userId = gm.getMember().getUserid();
-		Member member = gm.getMember();
 		List<OrdersVo> orderList = ss.adminOrderList();
 		model.addAttribute("orderList", orderList);
-		model.addAttribute("member", member);
 	}
 	
 	// 관리자 주문 상세 확인
 	@RequestMapping(value = "/manager/adminOrderView", method =RequestMethod.GET )
 	public void getadminOrderList( OrdersVo order,String orderId, Model model) {
 		order.setOrderId(orderId);
-		Member member = gm.getMember();
 		List<OrdersVo> orderView = ss.adminOrderView(order);
 		model.addAttribute("orderView", orderView);
-		model.addAttribute("member", member);
 	}
 	
 	@RequestMapping(value = "/manager/SearchOrderList", method =RequestMethod.GET )
@@ -222,13 +207,12 @@ public class ShopController {
 								String keyword,  Model model) {
 		List<OrdersVo> orderList = ss.SearchOrderList(order);
 		order.setOrderId(orderId);
-		Member member = gm.getMember();
 		model.addAttribute("billState", billState);
 		model.addAttribute("type", type);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("orderId", orderId);
 		model.addAttribute("orderList", orderList);
-		model.addAttribute("member", member);
+		
 		return "/manager/adminOrderList";
 	}
 	

@@ -19,8 +19,8 @@ public class ShopDaoImpl implements ShopDao {
 	private final SqlSession session;
 
 	@Override
-	public List<BookVo> bookList(BookVo book) {
-		List<BookVo> bookList = session.selectList("ShopList", book);
+	public List<BookVo> bookList() {
+		List<BookVo> bookList = session.selectList("ShopList");
 		return bookList;
 	}
 
@@ -116,16 +116,6 @@ public class ShopDaoImpl implements ShopDao {
 	public List<OrdersVo> searchOrderList(OrdersVo order) {
 		List<OrdersVo> orderList = session.selectList("SearchOrderList", order);
 		return orderList;
-	}
-
-	@Override
-	public int processTotal() {
-		int totProcessCnt = 0;
-		try {
-			totProcessCnt = session.selectOne("RYShopProcessTotal");
-		} catch (Exception e) {
-		}
-		return totProcessCnt;
 	}
 
 	

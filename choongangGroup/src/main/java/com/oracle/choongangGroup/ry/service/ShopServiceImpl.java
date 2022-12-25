@@ -23,8 +23,8 @@ public class ShopServiceImpl implements ShopService {
 	private final ShopDao sd;
 
 	@Override
-	public List<BookVo> bookList(BookVo book) {
-		List<BookVo> bookList = sd.bookList(book);
+	public List<BookVo> bookList() {
+		List<BookVo> bookList = sd.bookList();
 		return bookList;
 	}
 
@@ -119,13 +119,6 @@ public class ShopServiceImpl implements ShopService {
 	public List<OrdersVo> SearchOrderList(OrdersVo order) {
 		List<OrdersVo> orderList = sd.searchOrderList(order);
 		return orderList;
-	}
-
-
-	@Override
-	public int processTotal() {
-		int totProcessCnt = sd.processTotal();
-		return totProcessCnt;
 	}
 
 

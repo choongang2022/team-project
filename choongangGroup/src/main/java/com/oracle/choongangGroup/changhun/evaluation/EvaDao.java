@@ -6,12 +6,10 @@ public interface EvaDao {
 
 	List<EvaVo> evaList(String pname);
 
-	List<EvaVo> profList(String pname);
+	List<String> profList();
 
 	EvaVo total(String pname);
 
 	List<EvaVo> reviewList(String pname);
-
-	List<String> profNameList();
 
 }
