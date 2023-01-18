@@ -36,6 +36,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.oracle.choongangGroup.changhun.JPA.Member;
+import com.oracle.choongangGroup.dongho.auth.authutils.CookieUtils;
+import com.oracle.choongangGroup.dongho.auth.authutils.GetMember;
+import com.oracle.choongangGroup.dongho.auth.authutils.RSAUtils;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -52,6 +55,8 @@ public class SecurityController {
 	private final JavaMailSender mailSender;
 	private final JwtTokenProvider jwtp;
 	private final GetMember gm;
+    private final CookieUtils cookieUtils;
+    private final RSAUtils rsaUtils;
 
 	
 	@Value("${spring.mail.username}")
@@ -81,9 +86,9 @@ public class SecurityController {
 		log.info("====== loginForm 요청 start ======");
 		String targetUrl = "";
 		// Request Header cookie 에서 JWT 토큰 추출
-        String accessToken  = resolveAccessToken((HttpServletRequest) request);
-        String refreshToken = resolveRefreshToken((HttpServletRequest) request);
-        String keepToken    = resolveKeepToken((HttpServletRequest) request);
+		String accessToken  = cookieUtils.resolveAccessToken(request);
+		String refreshToken = cookieUtils.resolveRefreshToken(request);
+		String keepToken    = cookieUtils.resolveKeepToken(request);
         Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
         Collection<? extends GrantedAuthority> roles = authentication.getAuthorities();
         if (accessToken != null && refreshToken != null || keepToken != null) {
@@ -124,12 +129,11 @@ public class SecurityController {
         log.info("login securedUsername : {}", securedUsername);
         String username = null;
         String password = null;
-        
         // 복호화 try
         try {
-        	username = decryptRSA(privateKey, securedUsername);
+        	username = rsaUtils.decryptRSA(privateKey, securedUsername);
         	log.info("복호화 try username : {}", username);
-            password = decryptRSA(privateKey, securedPassword);
+            password = rsaUtils.decryptRSA(privateKey, securedPassword);
             log.info("복호화 try username : {}", password);
         } catch (Exception e) {
             e.printStackTrace();
@@ -140,38 +144,17 @@ public class SecurityController {
         TokenInfo tokenInfo = this.securityService.login(username, password, keepLogin);
         String accessToken  = URLEncoder.encode(tokenInfo.getAccessToken(), "utf-8");
         String refreshToken = URLEncoder.encode(tokenInfo.getRefreshToken(), "utf-8");
-        
         // DB에 Refresh Token 저장( 추후 Access Token의 유효기간이 끝났을 때 Refresh Token 검증을 위함)
         securityService.saveRefreshToken(refreshToken, username);
-        
         // session 에 넣어줄 username setting
         request.setAttribute("userid", username);
-        
         // 클라이언트의 쿠키에 넣을 토큰 setting
-        ResponseCookie cookieAT = ResponseCookie.from("AccessToken","Bearer" + accessToken)
-        		.path("/")
-        		.httpOnly(true)
-        		.domain("localhost")
-//        		.maxAge(7 * 24 * 60 * 60) // 유효시간을 정하지 않으면 session cookie (휘발성. 브라우저종료시 삭제)
-        		.build();
-		ResponseCookie cookieRT = ResponseCookie.from("RefreshToken","Bearer" + refreshToken)
-				.path("/")
-        		.httpOnly(true)
-        		.domain("localhost")
-//        		.maxAge(7 * 24 * 60 * 60) // 유효시간을 정하지 않으면 session cookie (휘발성. 브라우저종료시 삭제)
-        		.build();
-		response.addHeader("Set-Cookie", cookieAT.toString());
-		response.addHeader("Set-Cookie", cookieRT.toString());
+        cookieUtils.setCookie("AccessToken", accessToken, false, false);
+        cookieUtils.setCookie("RefreshToken", refreshToken, false, false);
 		// 자동로그인 토큰 쿠키 setting
 		if(keepLogin == 1) {
 			String keepToken = URLEncoder.encode(tokenInfo.getKeepToken(), "utf-8");
-			ResponseCookie cookieKT = ResponseCookie.from("keepToken","Bearer" + keepToken)
-					.path("/")
-					.httpOnly(true)
-					.domain("localhost")
-	        		.maxAge(14 * 24 * 60 * 60) // 유효시간을 정하지 않으면 session cookie (휘발성. 브라우저종료시 삭제)
-					.build();
-			response.addHeader("Set-Cookie", cookieKT.toString());
+			cookieUtils.setCookie("keepToken", keepToken, true, false);
 		}
     }
 	
@@ -197,9 +180,9 @@ public class SecurityController {
 		String username = null;
 		String password = null;
 		try {
-			username = decryptRSA(privateKey, encryptedUsername);
+			username = rsaUtils.decryptRSA(privateKey, encryptedUsername);
 			log.info("joinProc 복호화 try username : {}", username);
-			password = decryptRSA(privateKey, encryptedPassword);
+			password = rsaUtils.decryptRSA(privateKey, encryptedPassword);
 			log.info("joinProc 복호화 try password : {}", password);
 			
 		} catch (Exception e) {
@@ -268,7 +251,7 @@ public class SecurityController {
         log.info("updatePassword authenticate privateKey : {}", privateKey);
 		String password = null;
 		try {
-			password = decryptRSA(privateKey, paramPassword);
+			password = rsaUtils.decryptRSA(privateKey, paramPassword);
 			log.info("updatePassword rsa 복호화 try password : {}", password);
 			
 		} catch (Exception e) {
@@ -365,79 +348,4 @@ public class SecurityController {
 		}
 	}
 	
-	
-	// RSA 복호화 method
-    public String decryptRSA(PrivateKey privateKey, String securedValue) throws Exception {
-        Cipher cipher = Cipher.getInstance("RSA");
-        byte[] encryptedBytes = hexToByteArray(securedValue);
-        cipher.init(2, privateKey);
-        byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
-        String decryptedValue = new String(decryptedBytes, "utf-8");
-        return decryptedValue;
-    }
-    
-    public static byte[] hexToByteArray(String hex) {
-        if (hex == null || hex.length() % 2 != 0)
-            return new byte[0];
-        byte[] bytes = new byte[hex.length() / 2];
-        for (int i = 0; i < hex.length(); i += 2) {
-            byte value = (byte)Integer.parseInt(hex.substring(i, i + 2), 16);
-            bytes[(int)Math.floor((i / 2))] = value;
-        }
-        return bytes;
-    }
-    
-    // Request Header (cookie) 에서 keep토큰 정보 추출
-    private String resolveKeepToken(HttpServletRequest request) {
-    	Cookie[] list = request.getCookies();
-        String bearerToken = "";
-        if (list != null) {
-        	for (Cookie cookie : list) {
-    			if (cookie != null && cookie.getName().equals("keepToken")) {
-    				bearerToken = cookie.getValue();
-    				if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer")) {
-    					// 쿠키 value에서 bearer 부분 제외한 token만 추출
-    		            return bearerToken.substring(6);
-    		        }
-    			}
-    		}
-		}
-		return null;
-	}
-    
-    // Request Header (cookie) 에서 access토큰 정보 추출
-    private String resolveAccessToken(HttpServletRequest request) {
-        Cookie[] list = request.getCookies();
-        String bearerToken = "";
-        if (list != null) {
-        	for (Cookie cookie : list) {
-    			if (cookie != null && cookie.getName().equals("AccessToken")) {
-    				bearerToken = cookie.getValue();
-    				if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer")) {
-    					// 쿠키 value에서 bearer 부분 제외한 token만 추출
-    		            return bearerToken.substring(6);
-    		        }
-    			}
-    		}
-		}
-		return null;
-    }
-    
-    // Request Header (cookie) 에서 refresh토큰 정보 추출
-    private String resolveRefreshToken(HttpServletRequest request) {
-    	Cookie[] list = request.getCookies();
-    	String bearerToken = "";
-    	if (list != null) {
-    		for (Cookie cookie : list) {
-    			if (cookie != null && cookie.getName().equals("RefreshToken")) {
-    				bearerToken = cookie.getValue();
-    				if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer")) {
-    					// 쿠키 value에서 bearer 부분 제외한 token만 추출
-    					return bearerToken.substring(6);
-    				}
-    			}
-    		}
-    	}
-    	return null;
-    }
 }

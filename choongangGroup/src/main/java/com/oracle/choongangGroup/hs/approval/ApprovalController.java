@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oracle.choongangGroup.changhun.JPA.Member;
-import com.oracle.choongangGroup.dongho.auth.GetMember;
 import com.oracle.choongangGroup.dongho.auth.SecurityService;
+import com.oracle.choongangGroup.dongho.auth.authutils.GetMember;
 import com.oracle.choongangGroup.taewoo.domain.Notice;
 import com.oracle.choongangGroup.taewoo.dto.MessageDto;
 import com.oracle.choongangGroup.taewoo.repository.NoticeJpaRepository;

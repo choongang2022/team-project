@@ -24,7 +24,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.oracle.choongangGroup.dongho.auth.GetMember;
+import com.oracle.choongangGroup.dongho.auth.authutils.GetMember;
 import com.oracle.choongangGroup.hj.model.EvaluationVo;
 import com.oracle.choongangGroup.hj.model.MemberVo;
 import com.oracle.choongangGroup.hj.service.EvaluationService;

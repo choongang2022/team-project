@@ -24,7 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.oracle.choongangGroup.changhun.JPA.Member;
-import com.oracle.choongangGroup.dongho.auth.GetMember;
+import com.oracle.choongangGroup.dongho.auth.authutils.GetMember;
 import com.oracle.choongangGroup.hs.approval.Paging;
 import com.oracle.choongangGroup.ry.UpLoad.UpLoadFileUtils;
 import com.oracle.choongangGroup.ry.model.BookCateVo;

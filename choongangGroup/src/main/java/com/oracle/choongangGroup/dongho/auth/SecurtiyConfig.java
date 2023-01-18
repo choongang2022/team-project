@@ -21,6 +21,7 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
 
 import com.oracle.choongangGroup.dongho.auth.CustomAuthenticationProvider;
 import com.oracle.choongangGroup.dongho.auth.PrincipalDetailsService;
+import com.oracle.choongangGroup.dongho.auth.authutils.CookieUtils;
 
 import lombok.RequiredArgsConstructor;
 
@@ -33,6 +34,7 @@ public class SecurtiyConfig {
 	private final SecurityService securityService;
     private final JwtTokenProvider jwtTokenProvider;
     private final HttpServletResponse response;
+    private final CookieUtils cookieUtils;
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -73,7 +75,7 @@ public class SecurtiyConfig {
             			 ).authenticated()
             //.anyRequest().authenticated() //활성화 하면 로그인페이지 두번 요청되는듯하다.
 			.and()
-			.addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider, securityService, response), UsernamePasswordAuthenticationFilter.class)
+			.addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider, securityService, response, cookieUtils), UsernamePasswordAuthenticationFilter.class)
 
 			//.and()
 			.formLogin()

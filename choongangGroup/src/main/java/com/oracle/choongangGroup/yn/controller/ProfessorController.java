@@ -37,7 +37,7 @@ import com.oracle.choongangGroup.changhun.address.MemberRepository;
 import com.oracle.choongangGroup.changhun.evaluation.EvaDao;
 import com.oracle.choongangGroup.changhun.evaluation.EvaService;
 import com.oracle.choongangGroup.changhun.evaluation.EvaVo;
-import com.oracle.choongangGroup.dongho.auth.GetMember;
+import com.oracle.choongangGroup.dongho.auth.authutils.GetMember;
 import com.oracle.choongangGroup.hs.managerPage.ManagerPageRepository;
 import com.oracle.choongangGroup.hs.managerPage.ManagerPageService;
 import com.oracle.choongangGroup.sh.domain.ApplicationLec;
