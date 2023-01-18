@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oracle.choongangGroup.changhun.JPA.Member;
-import com.oracle.choongangGroup.dongho.auth.GetMember;
+import com.oracle.choongangGroup.dongho.auth.authutils.GetMember;
 import com.oracle.choongangGroup.hs.approval.ApprovalService;
 import com.oracle.choongangGroup.sh.domain.ApplicationLec;
 import com.oracle.choongangGroup.sh.domain.Grade;

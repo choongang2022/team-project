@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 
 import com.oracle.choongangGroup.changhun.JPA.Member;
-import com.oracle.choongangGroup.dongho.auth.GetMember;
+import com.oracle.choongangGroup.dongho.auth.authutils.GetMember;
 import com.oracle.choongangGroup.dongho.professor.lecturePlan.dto.LecPlanDto;
 import com.oracle.choongangGroup.dongho.professor.lecturePlan.dto.LecPlanLecDto;
 import com.oracle.choongangGroup.dongho.professor.lecturePlan.dto.LecPlanWeekDto;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oracle.choongangGroup.changhun.JPA.Member;
-import com.oracle.choongangGroup.dongho.auth.GetMember;
+import com.oracle.choongangGroup.dongho.auth.authutils.GetMember;
 import com.oracle.choongangGroup.dongho.professor.makeup.OrdersDto;
 
 import lombok.RequiredArgsConstructor;

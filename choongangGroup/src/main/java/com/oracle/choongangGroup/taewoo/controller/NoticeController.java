@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.oracle.choongangGroup.changhun.JPA.Member;
-import com.oracle.choongangGroup.dongho.auth.GetMember;
+import com.oracle.choongangGroup.dongho.auth.authutils.GetMember;
 import com.oracle.choongangGroup.taewoo.domain.Notice;
 import com.oracle.choongangGroup.taewoo.dto.NoticeDto;
 import com.oracle.choongangGroup.taewoo.repository.NoticeJpaRepository;
